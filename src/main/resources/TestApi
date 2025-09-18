@@ -1,0 +1,140 @@
+
+
+############# Customer Api ###############
+
+-> Register User
+
+Post Mapping ->http://localhost:8080/NihilentBank/register
+
+{
+     "customerId":"U001",
+    "name":"Aniket",
+     "emailId":"aniket@gmail.com",
+     "password":"Aniket@123",
+     "mobileNumber":982365149,
+     "roles":"Admin",
+     "address":"Bhandara",
+     "gender":"Male"
+}
+-------------------------------------------------------------------------------------
+-> Authenticate 
+
+post Mapping -> http://localhost:8080/NihilentBank/auth
+
+{
+    "username":"aniket@gmail.com",
+    "password":"Aniket@123"
+}
+
+-------------------------------------------------------------------------------
+role-> Admin
+Get Mapping -> http://localhost:8080/NihilentBank/admin
+
+Send Jwt token 
+---------------------------------------------------------------------------------
+role-> user
+Get Mapping -> http://localhost:8080/NihilentBank/user
+
+Send Jwt token 
+---------------------------------------------------------------------------------
+Get mapping-> http://localhost:8080/NihilentBank/admin/getCustomers
+
+--------------------------------------------------------------------------------
+
+#Bank Account
+
+create Account 
+Post Mapping:-> http://localhost:8080/NihilentBank/admin/createAccount
+
+{
+
+    "accountNumber":123456672,
+    "bankName":"HDFC Bank",
+    "ifscCode":"HDFC000123",
+    "accountType":"SAVING",
+    "balance":1000,
+    "panCard":"ABCD998D",
+    "accountStatus":"ACTIVE",
+
+   "customerDto":
+    {
+        "mobileNumber":8176373832
+    }
+
+}
+--------------------------------------------------------------------------------------------
+
+ Get Account Details
+Get Mapping-> http://localhost:8080/NihilentBank/admin/accountDetails/12345667
+
+----------------------------------------------------------------------------------------------------
+
+
+Get Balance 
+
+Get Mapping -> http://localhost:8080/NihilentBank/user/getBalance/123456672
+
+---------------------------------------------------------------------------------
+
+
+#Digital BankAccount
+
+Link Account
+
+Get Mapping-> http://localhost:8080/NihilentBank/user/linkAccount?mobileNumber=8176373831&accountNumber=12345667
+
+
+--------------------------------------------------------------------------------------------------
+
+
+#Transaction 
+
+
+fund Transfer
+
+post Mapping -> http://localhost:8080/NihilentBank/user/fundTransfer
+
+{
+"modeOfTransaction":"online",
+"receivingMobileNumber":8176373831,
+ "receivingAccountNumber":12345667,
+ "amount": 200,
+ "senderMobileNumber":8176373832,
+  "senderAccountNumber":123456672,
+	"remark" :"pay"
+
+}
+--------------------------------------------------------------------
+
+# Loan
+
+post Mapping ->  http://localhost:8080/NihilentBank/applyLoan
+
+
+{
+
+    "accountNumber":1234567898,
+    "applicantName":"Aniket",
+  "loanType": "HOME",
+  "loanAmount": 2000000,
+  "tenureMonths": 12,
+  "interestRate": 10.75,
+  "emiAmount": 19936.81,
+  "status": "PENDING"
+}
+
+
+
+------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
