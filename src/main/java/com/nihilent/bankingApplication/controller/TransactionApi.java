@@ -292,9 +292,14 @@ public class TransactionApi {
 	        
 	         System.out.println(tx.getReceivingAccountNumber());
 	         table.addCell(reciverAccount).setFontSize(8);
-	         table.addCell(tx.getRemark()).setFontSize(8);
+	         
+
+	         String remark=Optional.ofNullable(tx.getRemark())
+	        		 .map(String::valueOf)
+	        		 .orElse("");
+	         table.addCell(remark).setFontSize(8);
 	        
-	         System.out.println(tx.getRemark());
+	         System.out.println(remark);
 	       
 	         String creditStr = Optional.ofNullable(tx.getCredit())
 		    		    .map(String::valueOf)
