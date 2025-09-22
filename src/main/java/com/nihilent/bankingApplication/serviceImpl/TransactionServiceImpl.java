@@ -92,7 +92,7 @@ public class TransactionServiceImpl implements TransactionService {
 
 		Long receivingAccountNumber = transactionDto.getReceivingAccountNumber();
 
-//		accountValidation.accountNumberLength(receivingAccountNumber);
+
 
 		accountValidation.accountNumberLength(transactionDto.getSenderAccountNumber(),
 				transactionDto.getReceivingAccountNumber());
@@ -132,8 +132,7 @@ public class TransactionServiceImpl implements TransactionService {
 		String transactionId1 = "TNX" + integer1.toString();
 		String transactionId2 = "TNX" + integer2.toString();
 
-		System.out.println(transactionId1);
-		System.out.println(transactionId2);
+	
 		Transaction transactionDebit = new Transaction();
 
 		transactionDebit.setTransactionId(transactionId1);
@@ -142,15 +141,15 @@ public class TransactionServiceImpl implements TransactionService {
 
 		transactionDebit.setAmount(transactionDto.getAmount());
 		transactionDebit.setReceivingAccountNumber(transactionDto.getReceivingAccountNumber());
-//		transaction.setReceivingMobileNumber(transactionDto.getReceivingMobileNumber());
+
 
 		transactionDebit.setRemark(transactionDto.getRemark());
 		transactionDebit.setSenderAccountNumber(transactionDto.getSenderAccountNumber());
-//		transaction.setSenderMobileNumber(transactionDto.getSenderMobileNumber());
 
-//
+
+
 		transactionDebit.setDebit(transactionDto.getAmount());
-//      transactionDebit.setCredit(null);
+
 
 		transactionDebit.setTransactionType("DEBIT");
 
@@ -161,10 +160,10 @@ public class TransactionServiceImpl implements TransactionService {
 			transactionRepository.save(transactionDebit);
 			System.out.println("transaction debit saved");
 		} catch (Exception e) {
-//		    e.getMessage();
+
 			logger.error("Failed to save debit transaction: {}", e.getMessage());
 		}
-		System.out.println("transaction debit");
+		logger.info("transaction debit");
 
 		Transaction transactionCredit = new Transaction();
 
@@ -174,11 +173,11 @@ public class TransactionServiceImpl implements TransactionService {
 
 		transactionCredit.setAmount(transactionDto.getAmount());
 		transactionCredit.setReceivingAccountNumber(transactionDto.getReceivingAccountNumber());
-//		transaction.setReceivingMobileNumber(transactionDto.getReceivingMobileNumber());
+
 
 		transactionCredit.setRemark(transactionDto.getRemark());
 		transactionCredit.setSenderAccountNumber(transactionDto.getSenderAccountNumber());
-//		transaction.setSenderMobileNumber(transactionDto.getSenderMobileNumber());
+
 
 		transactionCredit.setTransactionType("CREDIT");
 		transactionCredit.setCredit(transactionDto.getAmount());
@@ -221,13 +220,11 @@ public class TransactionServiceImpl implements TransactionService {
 	public List<TransactionDto> transactionDetails(Long accountNumber) throws NihilentBankException {
 		// TODO Auto-generated method stub
 
-//		List<Transaction> findBySenderAccountNumberOrReceivingAccountNumber(Long sender, Long receiver);
+
 		List<Transaction> list = transactionRepository.findBySenderAccountNumberOrReceivingAccountNumber(accountNumber,
 				accountNumber);
 
-//		List<Transaction> list = transactionRepository.findBySenderAccountNumber(accountNumber);
 
-//		Transaction transaction = bySenderAccountNumber.orElseThrow(()->  new NihilentBankException("Invalid account number"));
 
 		List<Transaction> collect = list.stream()
 				.filter(tx -> (accountNumber.equals(tx.getSenderAccountNumber())
@@ -243,12 +240,12 @@ public class TransactionServiceImpl implements TransactionService {
 			transactionDto.setAmount(transaction.getAmount());
 			transactionDto.setModeOfTransaction(transaction.getModeOfTransaction());
 			transactionDto.setReceivingAccountNumber(transaction.getReceivingAccountNumber());
-//			transactionDto.setReceivingMobileNumber(transaction.getReceivingMobileNumber());
+
 
 			transactionDto.setRemark(transaction.getRemark());
 			transactionDto.setSenderAccountNumber(transaction.getSenderAccountNumber());
 
-//			transactionDto.setSenderMobileNumber(transaction.getSenderMobileNumber());
+
 			transactionDto.setTransactionId(transaction.getTransactionId());
 			transactionDto.setTransactionTime(transaction.getTransactionTime());
 			transactionDto.setTransactionType(transaction.getTransactionType());
@@ -258,7 +255,6 @@ public class TransactionServiceImpl implements TransactionService {
 			transactionDtos.add(transactionDto);
 
 		});
-//transactionDtos.sort(Comparator.comparing(Transaction::getTransactionTime));
 
 		transactionDtos.stream().sorted(Comparator.comparing(TransactionDto::getTransactionTime));
 		return transactionDtos;
@@ -351,25 +347,27 @@ public class TransactionServiceImpl implements TransactionService {
 			IndexRequest indexRequest = new IndexRequest(INDEX).id(tnx.getTransactionId()) // This becomes _id
 					.source(doc); // ✅ this becomes _source
 
-			System.out.println("Uploading JSON: " + objectMapper.writeValueAsString(doc));
+			logger.info("Uploading JSON: " + objectMapper.writeValueAsString(doc));
 
 			bulkRequest.add(indexRequest);
+			
+			logger.info("data upload");
 
-			System.out.println("data upload");
+			
 
 		}
 
 		transactionRepository.saveAll(txns);
-		System.out.println("Data saved");
+		logger.info("Data saved");
 		saveFailedTransactionsToFile(failedTransactions);
 
-		System.out.println("********************");
+
 //          BulkResponse bulkResponse = client.bulk(bulkRequest, RequestOptions.DEFAULT);
 //
 
 		try {
 			BulkResponse response = client.bulk(bulkRequest, RequestOptions.DEFAULT);
-			System.out.println(response);
+	
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -408,9 +406,7 @@ public class TransactionServiceImpl implements TransactionService {
 									&& "CREDIT".equalsIgnoreCase(tx.getTransactionType())))
 					.collect(Collectors.toList());
 
-			for (Transaction tx : collect) {
-				System.out.println(tx.getTransactionTime());
-			}
+			
 			return collect;
 
 		} else {
@@ -433,7 +429,6 @@ public class TransactionServiceImpl implements TransactionService {
 		Double totalSentToday = transactionRepository.getTotalDebitedAmountForSenderBetween(accountNumber, startOfDay,
 				endOfDay);
 
-		System.out.println(totalSentToday);
 		if (totalSentToday == null) {
 			totalSentToday = 0.0;
 		}
@@ -445,13 +440,12 @@ public class TransactionServiceImpl implements TransactionService {
 			throw new NihilentBankException("Daily transaction limit of 50,000 exceeded.");
 		}
 
-		System.out.println(senderUpiID);
-		System.out.println(recevierUpiId);
+	
 		Optional<DigitalBankAccount> senderUpiId = digitalBankRepository.findByDigitalBankId(senderUpiID);
 
 		Optional<DigitalBankAccount> reciverUpiId = digitalBankRepository.findByDigitalBankId(recevierUpiId);
 
-		System.out.println("upiid reciver" + recevierUpiId);
+
 
 		DigitalBankAccount senderDigitalBankAccount = senderUpiId
 				.orElseThrow(() -> new NihilentBankException("Invalid sender UPI ID"));
@@ -467,10 +461,7 @@ public class TransactionServiceImpl implements TransactionService {
 
 		Long reciverAccountNumber = reciverDigitalBankAccount.getBankAccount().getAccountNumber();
 
-		System.out.println("sender Account number" + senderAccountNumber);
-
-		System.out.println("reciver Account number" + reciverAccountNumber);
-		System.out.println(senderBalance);
+	
 
 		if (senderBalance < amount) {
 			throw new NihilentBankException("Invalid Balance");
@@ -508,7 +499,6 @@ public class TransactionServiceImpl implements TransactionService {
 		transactionDebit.setRemark(remark);
 		transactionDebit.setClosingBalance(senderAccount.getBalance());
 
-		System.out.println("Credit transaction sucess");
 
 		transactionRepository.save(transactionDebit);
 
@@ -533,7 +523,7 @@ public class TransactionServiceImpl implements TransactionService {
 		transactionCredit.setCredit(amount);
 		transactionCredit.setClosingBalance(reciverAccout.getBalance());
 		transactionCredit.setRemark(remark);
-		System.out.println("Debit transaction Sucess");
+	
 		transactionRepository.save(transactionCredit);
 
 		return "Transaction Sucess";
