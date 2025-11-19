@@ -12,24 +12,24 @@ import jakarta.persistence.Id;
 @Entity
 public class AuditLog {
 
-	
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String transactionId;
 
 	private String modeOfTransaction;
-//	private Long receivingMobileNumber;
+
 	private Long receivingAccountNumber;
+
 	private Double amount;
-//	private Long senderMobileNumber;
+
 	private Long senderAccountNumber;
+
 	private String remark;
-	
-	
+
 	private String status;
+
 	private String errorMesssage;
 
 	@UpdateTimestamp
@@ -114,6 +114,5 @@ public class AuditLog {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
-	
+
 }

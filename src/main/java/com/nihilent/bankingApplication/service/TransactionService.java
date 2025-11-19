@@ -1,7 +1,6 @@
 package com.nihilent.bankingApplication.service;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -16,15 +15,15 @@ public interface TransactionService {
 	public String fundTransfer(TransactionDto transactionDto) throws NihilentBankException;
 
 	public List<TransactionDto> alltransactionDetails(Long accountNumber) throws NihilentBankException;
-	
-	
+
 	public List<TransactionDto> transactionDetails(Long accountNumber) throws NihilentBankException;
-	
-	public void parseFileAndSave(MultipartFile file) throws  NumberFormatException, IOException,NihilentBankException;
-	
-	
-	public List<Transaction> getTransactionsByAccountNumberAndDateRange(Long accountNumber, LocalDateTime startDate, LocalDateTime endDate) ;
-	
-	
-	public String upiFundTransafer(String senderUpiID,String recevierUpiId, Double amount,String remark) throws NihilentBankException;
+
+	public void parseFileAndSave(MultipartFile file) throws NumberFormatException, IOException, NihilentBankException;
+
+	public List<Transaction> getTransactionsByAccountNumberAndDateRange(Long accountNumber, LocalDateTime startDate,
+			LocalDateTime endDate) throws NihilentBankException;
+
+	public String upiFundTransafer(String senderUpiID, String recevierUpiId, Double amount, String remark)
+			throws NihilentBankException;
+
 }

@@ -12,40 +12,37 @@ import jakarta.persistence.OneToMany;
 @Entity
 public class Operators {
 
-	
-	    @Id
-	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    private Long operatorId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long operatorId;
 
-	    private String name;
+	private String name;
 
-	    @OneToMany(mappedBy = "operators", cascade = CascadeType.ALL)
-	    private List<Plans> plans;
+	@OneToMany(mappedBy = "operators", cascade = CascadeType.ALL)
+	private List<Plans> plans;
 
-		public Long getOperatorId() {
-			return operatorId;
-		}
+	public Long getOperatorId() {
+		return operatorId;
+	}
 
-		public void setOperatorId(Long operatorId) {
-			this.operatorId = operatorId;
-		}
+	public void setOperatorId(Long operatorId) {
+		this.operatorId = operatorId;
+	}
 
-		public String getName() {
-			return name;
-		}
+	public String getName() {
+		return name;
+	}
 
-		public void setName(String name) {
-			this.name = name;
-		}
+	public void setName(String name) {
+		this.name = name;
+	}
 
-		public List<Plans> getPlans() {
-			return plans;
-		}
+	public List<Plans> getPlans() {
+		return plans;
+	}
 
-		public void setPlans(List<Plans> plans) {
-			this.plans = plans;
-		}
-	    
-	    
-	    
+	public void setPlans(List<Plans> plans) {
+		this.plans = plans;
+	}
+
 }

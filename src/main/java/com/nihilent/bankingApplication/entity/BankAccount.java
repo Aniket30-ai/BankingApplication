@@ -42,7 +42,7 @@ public class BankAccount {
 
 	private LocalDate dateOfBirth;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "mobile_number")
 	private Customer customer;
 

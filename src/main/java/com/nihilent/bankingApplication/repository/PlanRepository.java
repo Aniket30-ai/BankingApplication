@@ -11,8 +11,6 @@ import com.nihilent.bankingApplication.entity.Plans;
 @Repository
 public interface PlanRepository extends JpaRepository<Plans, Long> {
 
-	
-	
 	@Query("select p from Plans p where p.operators.operatorId= ?1")
 	List<Plans> findPlansByPlanId(Long planId);
 }

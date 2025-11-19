@@ -5,13 +5,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Base64;
 import java.util.Optional;
-import java.util.function.Supplier;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -22,7 +19,6 @@ import com.nihilent.bankingApplication.entity.AccountType;
 import com.nihilent.bankingApplication.entity.BankAccount;
 import com.nihilent.bankingApplication.entity.Customer;
 import com.nihilent.bankingApplication.entity.DigitalBankAccount;
-import com.nihilent.bankingApplication.entity.Transaction;
 import com.nihilent.bankingApplication.exception.NihilentBankException;
 import com.nihilent.bankingApplication.repository.BankAccountRepository;
 import com.nihilent.bankingApplication.repository.CustomerRepository;
@@ -30,33 +26,42 @@ import com.nihilent.bankingApplication.repository.DigitalBankRepository;
 import com.nihilent.bankingApplication.service.DigitalBankService;
 
 @Service
-@Transactional
 public class DigitalBankServiceImpl implements DigitalBankService {
 
-	@Autowired
-	private DigitalBankRepository digitalBankRepository;
+	private final DigitalBankRepository digitalBankRepository;
 
-	@Autowired
-	CustomerRepository customerRepository;
+	private final CustomerRepository customerRepository;
 
-	@Autowired
-	BankAccountRepository accountRepository;
+	private final BankAccountRepository accountRepository;
+
+	public DigitalBankServiceImpl(DigitalBankRepository digitalBankRepository, CustomerRepository customerRepository,
+			BankAccountRepository accountRepository) {
+
+		this.digitalBankRepository = digitalBankRepository;
+		this.customerRepository = customerRepository;
+		this.accountRepository = accountRepository;
+	}
+
+	@Value("${DigitalBanKService.Invalid_MobileNumber}")
+	private String invalidMobileNumber;
+
+	@Value("${DigitalBanKService.Invalid_AccountNumber}")
+	private String invalidAccountNumber;
+
+	@Value("${DigitalBanKService.Failed_QRGenerate}")
+	private String failedQrGenerate;
+
+	@Value("${DigitalBanKService.Invalid_upiId}")
+	private String invalidUpiId;
 
 	@Override
 	public String linkAccount(Long mobileNumber, Long accountNumber) throws NihilentBankException {
 		// TODO Auto-generated method stub
 		Optional<DigitalBankAccount> byAccountNumber2 = digitalBankRepository.findByAccountNumber(accountNumber);
 
-		System.out.println("Sarted upi id created");
-//		String digitalBankId3 = byAccountNumber2.get().getDigitalBankId();
-//		System.out.println(digitalBankId3);
-//		if (byAccountNumber2.isPresent()) {
-//			throw new NihilentBankException("UPI ID already link....! "+digitalBankId3);
-//		}
-
 		Optional<Customer> byMobileNumber = customerRepository.findByMobileNumber(mobileNumber);
 
-		Customer customer = byMobileNumber.orElseThrow(() -> new NihilentBankException("Invalid Mobile Number"));
+		Customer customer = byMobileNumber.orElseThrow(() -> new NihilentBankException(invalidMobileNumber));
 
 		Optional<BankAccount> byAccountNumber = accountRepository.findByAccountNumber(accountNumber);
 
@@ -69,8 +74,6 @@ public class DigitalBankServiceImpl implements DigitalBankService {
 
 		AccountType accountType = bankAccount.getAccountType();
 
-//		System.out.println(accountType);
-
 		digitalBankAccount.setAccountType(accountType);
 
 		digitalBankAccount.setBankAccount(bankAccount);
@@ -78,10 +81,10 @@ public class DigitalBankServiceImpl implements DigitalBankService {
 
 		digitalBankAccount.setDigitalBankId(digitalBankId);
 
-		// ✅ Step 1: Generate UPI QR URL
+		//Generate UPI QR URL
 		String upiUrl = "upi://pay?pa=" + digitalBankId + "&pn=" + customer.getName() + "&cu=INR";
 
-		// ✅ Step 2: Generate QR Code
+		//Generate QR Code
 		try {
 			String filePath = "qrcodes/" + digitalBankId + ".png";
 			byte[] qrCodeImage = this.generateQRCodeImage(upiUrl, 300, 300, filePath);
@@ -91,12 +94,10 @@ public class DigitalBankServiceImpl implements DigitalBankService {
 
 			String digitalBankId2 = digitalBankAccount2.getDigitalBankId();
 
-			System.out.println(digitalBankId2);
-			System.out.println("QR Code saved to: " + filePath);
 			return digitalBankId2;
 
 		} catch (Exception e) {
-			throw new NihilentBankException("QR Code generation failed");
+			throw new NihilentBankException(failedQrGenerate);
 		}
 
 	}
@@ -121,7 +122,7 @@ public class DigitalBankServiceImpl implements DigitalBankService {
 		Optional<DigitalBankAccount> byDigitalBankId = digitalBankRepository.findByDigitalBankId(upiId);
 
 		DigitalBankAccount digitalBankAccount = byDigitalBankId
-				.orElseThrow(() -> new NihilentBankException("Invalid upi Id"));
+				.orElseThrow(() -> new NihilentBankException(invalidUpiId));
 
 		byte[] qrCodeImage = digitalBankAccount.getQrCodeImage();
 
@@ -134,7 +135,7 @@ public class DigitalBankServiceImpl implements DigitalBankService {
 		Optional<DigitalBankAccount> byAccountNumber = digitalBankRepository.findByAccountNumber(accountNumber);
 
 		DigitalBankAccount digitalBankAccount = byAccountNumber
-				.orElseThrow(() -> new NihilentBankException("Invalid accountNumber"));
+				.orElseThrow(() -> new NihilentBankException(invalidAccountNumber));
 
 		String digitalBankId = digitalBankAccount.getDigitalBankId();
 
@@ -142,5 +143,4 @@ public class DigitalBankServiceImpl implements DigitalBankService {
 
 	}
 
-	
 }

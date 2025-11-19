@@ -19,22 +19,10 @@ public class Loan {
 	private Long loanId;
 
 	private String applicantName;
-	
-	
-	
-//	@ManyToOne
-//    @JoinColumn(name = "account_number", nullable = false)
-//    private BankAccount account;
-	
-	
-	
-	
+
 	@ManyToOne
 	@JoinColumn(name = "account_number", nullable = false)
 	private BankAccount bankAccount;
-	
-	
-//	private Long accountNumber;
 
 	@Enumerated(EnumType.STRING)
 	private LoanType loanType;
@@ -128,8 +116,5 @@ public class Loan {
 	public void setBankAccount(BankAccount bankAccount) {
 		this.bankAccount = bankAccount;
 	}
-	
-	
-	
 
 }

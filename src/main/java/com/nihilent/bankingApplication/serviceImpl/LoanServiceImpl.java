@@ -1,22 +1,22 @@
 package com.nihilent.bankingApplication.serviceImpl;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.nihilent.bankingApplication.Validation.LoanValidation;
-import com.nihilent.bankingApplication.dto.TransactionDto;
+import com.nihilent.bankingApplication.dto.BankAccountDto;
 import com.nihilent.bankingApplication.entity.BankAccount;
 import com.nihilent.bankingApplication.entity.Loan;
 import com.nihilent.bankingApplication.entity.LoanStatus;
-import com.nihilent.bankingApplication.entity.LoanType;
 import com.nihilent.bankingApplication.entity.Transaction;
+import com.nihilent.bankingApplication.exception.NihilentBankException;
 import com.nihilent.bankingApplication.repository.BankAccountRepository;
 import com.nihilent.bankingApplication.repository.LoanRepository;
 import com.nihilent.bankingApplication.repository.TransactionRepository;
@@ -25,21 +25,49 @@ import com.nihilent.bankingApplication.service.LoanService;
 @Service
 public class LoanServiceImpl implements LoanService {
 
-	@Autowired
-	private LoanRepository loanRepository;
+	private final LoanRepository loanRepository;
+	
+	private final LoanValidation loanValidation;
 
-	@Autowired
-	private LoanValidation loanValidation;
+	private final BankAccountRepository bankAccountRepository;
+	
 
-	@Autowired
-	private BankAccountRepository bankAccountRepository;
+	private final TransactionRepository transactionRepository;
 	
 	
-	@Autowired
-	private TransactionRepository transactionRepository;
+	
+	
+	public LoanServiceImpl(LoanRepository loanRepository,LoanValidation loanValidation,BankAccountRepository bankAccountRepository,TransactionRepository transactionRepository) {
+		
+		
+		this.loanRepository=loanRepository;
+		this.loanValidation=loanValidation;
+		this.bankAccountRepository=bankAccountRepository;
+		this.transactionRepository=transactionRepository;
+	}
+	
+	
+	
+	@Value("${LoanService.Loan_Type}")
+	private String loanTypeInvalid;
 
+	
+	
+	@Value("${LoanService.Loan_Success}")
+	private String loanSuccess;
+	
+	
+	
+	@Value("${LoanService.Loan_NotFound}")
+	private String loanNotFound;
+	
+	
+	@Value("${LoanService.Loan_Processed}")
+	private String loanProcessed;
+	
 	@Override
-	public String applyLoan(Loan loanDto) {
+	@Transactional(rollbackFor = NihilentBankException.class)
+	public String applyLoan(Loan loanDto) throws NihilentBankException {
 		// TODO Auto-generated method stub
 
 		loanDto.setApplicationDate(LocalDate.now());
@@ -59,23 +87,24 @@ public class LoanServiceImpl implements LoanService {
 //			loanValidation.validateEducationLoan(loanDto);
 			calculateLoanDetails(loanDto, "EDUCATION");
 		}
-		default -> throw new IllegalArgumentException("Unsupported loan type");
+		default -> throw new NihilentBankException(loanTypeInvalid);
 		}
 
 		loanRepository.save(loanDto);
 
-		return "Loan apply sucess";
+		return loanSuccess;
 
 	}
 
 	@Override
-	public Loan updateLoanStatus(Long loanId, LoanStatus status) {
+	@Transactional(rollbackFor = NihilentBankException.class)
+	public Loan updateLoanStatus(Long loanId, LoanStatus status) throws NihilentBankException {
 		// TODO Auto-generated method stub
 
-		Loan loan = loanRepository.findById(loanId).orElseThrow(() -> new RuntimeException("Loan not found"));
+		Loan loan = loanRepository.findById(loanId).orElseThrow(() -> new NihilentBankException(loanNotFound));
 
 		if (loan.getStatus() != LoanStatus.PENDING) {
-			throw new IllegalStateException("Loan is already processed");
+			throw new NihilentBankException(loanProcessed);
 		}
 
 		// 1. Update loan status
@@ -88,6 +117,7 @@ public class LoanServiceImpl implements LoanService {
 			account.setBalance(newBalance);
 
 			BankAccount save = bankAccountRepository.save(account); // optional, but good practice
+	
 			
 			
 		Transaction transaction = new Transaction();
@@ -105,12 +135,12 @@ public class LoanServiceImpl implements LoanService {
 		
 		transaction.setTransactionId(transactionId1);
 		transaction.setModeOfTransaction("Loan Amount");
+		transaction.setRemark("Loan Amount");
 		transaction.setReceivingAccountNumber(loan.getBankAccount().getAccountNumber());
 		transaction.setTransactionType("CREDIT");
 		Long accountNumber = loan.getBankAccount().getAccountNumber();
 		System.out.println(accountNumber);
 		transactionRepository.save(transaction);
-		System.out.println("Transaction Saved");
 			
 		}
 
@@ -150,13 +180,13 @@ public class LoanServiceImpl implements LoanService {
 					l.setApplicationDate(loan.getApplicationDate()); // ✅ include this so sorting makes sense
 					return l;
 				}).collect(Collectors.toList());
-		loans.forEach(l -> System.out.println(l.getLoanId() + " - " + l.getApplicationDate()));
+		
 
 		return loans;
 
 	}
 
-	private void calculateLoanDetails(Loan loan, String type) {
+	private void calculateLoanDetails(Loan loan, String type) throws NihilentBankException {
 		int years = loan.getTenureMonths() / 12;
 		double rate;
 
@@ -187,7 +217,7 @@ public class LoanServiceImpl implements LoanService {
 			else
 				rate = 11.0;
 		}
-		default -> throw new IllegalArgumentException("Unknown loan type");
+		default -> throw new NihilentBankException(loanTypeInvalid);
 		}
 
 		loan.setInterestRate(rate);
@@ -202,5 +232,7 @@ public class LoanServiceImpl implements LoanService {
 
 		loan.setEmiAmount(Math.round(emi * 100.0) / 100.0); // rounded to 2 decimal places
 	}
+	
+	
 
 }

@@ -14,26 +14,42 @@ public class Transaction {
 	private String transactionId;
 
 	private String modeOfTransaction;
-//	private Long receivingMobileNumber;
+
 	private Long receivingAccountNumber;
+
 	private Double amount;
-//	private Long senderMobileNumber;
+
 	private Long senderAccountNumber;
+
 	private String remark;
+
 	private String transactionType;
-	
+
 	private String status;
+
 	private String errorMesssage;
 
-	
 	private Double closingBalance;
-	
-	
+
 	private Double credit;
-	
+
 	private Double debit;
-	
-	
+
+	public Transaction() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Transaction(String transactionId, String modeOfTransaction, Long receivingAccountNumber, Double amount,
+			Long senderAccountNumber, String remark) {
+		super();
+		this.transactionId = transactionId;
+		this.modeOfTransaction = modeOfTransaction;
+		this.receivingAccountNumber = receivingAccountNumber;
+		this.amount = amount;
+		this.senderAccountNumber = senderAccountNumber;
+		this.remark = remark;
+	}
+
 	public Double getCredit() {
 		return credit;
 	}
@@ -125,22 +141,6 @@ public class Transaction {
 		this.errorMesssage = errorMesssage;
 	}
 
-	public Transaction(String transactionId, String modeOfTransaction, Long receivingAccountNumber, Double amount,
-			Long senderAccountNumber, String remark) {
-		super();
-		this.transactionId = transactionId;
-		this.modeOfTransaction = modeOfTransaction;
-		this.receivingAccountNumber = receivingAccountNumber;
-		this.amount = amount;
-		this.senderAccountNumber = senderAccountNumber;
-		this.remark = remark;
-	}
-
-	public Transaction() {
-//		super();
-		// TODO Auto-generated constructor stub
-	}
-
 	public String getTransactionType() {
 		return transactionType;
 	}
@@ -156,9 +156,5 @@ public class Transaction {
 	public void setClosingBalance(Double closingBalance) {
 		this.closingBalance = closingBalance;
 	}
-
-
-	
-	
 
 }

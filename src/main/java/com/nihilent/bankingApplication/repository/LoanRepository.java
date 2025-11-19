@@ -8,14 +8,10 @@ import org.springframework.stereotype.Repository;
 
 import com.nihilent.bankingApplication.entity.Loan;
 
-
 @Repository
-public interface LoanRepository extends JpaRepository<Loan, Long>{
+public interface LoanRepository extends JpaRepository<Loan, Long> {
 
 	@Query("select l from Loan l where l.bankAccount.accountNumber = ?1")
 	List<Loan> findLoansByAccountNumber(Long accountNumber);
-	
-	
-	
-//	List<Loan> findLoansByAccountNumberOrderByApplicationDateDesc(String accountNumber);
+
 }

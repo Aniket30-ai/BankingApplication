@@ -2,48 +2,41 @@ package com.nihilent.bankingApplication.dto;
 
 import com.nihilent.bankingApplication.entity.Roles;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
 public class CustomerDto {
 
 	@NotNull(message = "{customer.mobileNumber.notPresent}")
-//	@Pattern(regexp = "[0-9]{10}",message = "{customer.mobileNumber.invalid}")
-	
+	@Min(value = 1000000000L, message = "{customer.mobileNumber.invalid}")
+	@Max(value = 9999999999L, message = "{customer.mobileNumber.invalid}")
 	private Long mobileNumber;
-	
-	@NotNull(message = "{customer.customerId.notPresent}")
-//	@Pattern(regexp = "[0-9]{10}",message = "{customer.customerId.invalid}")
+
 	private String customerId;
 
-	
 	@NotNull(message = "{customer.name.notPresent}")
-//	@Pattern(regexp = "",message = "{customer.name.invalid}")
+	@Pattern(regexp = "^[A-Z][a-z]+$", message = "{customer.name.invalid}")
 	private String name;
 
 	@NotNull(message = "{customer.emailId.notPresent}")
-//	@Email()
+	@Pattern(regexp = "^[a-z]+[0-9]*@[a-z]+\\.[a-z]{2,}$", message = "{customer.emailId.invalid}")
 	private String emailId;
 
 	@NotNull(message = "{customer.password.notPresent}")
 	private String password;
-	
+
 	@NotNull(message = "{customer.address.notPresent}")
+	@NotBlank(message = "{customer.address.notBlank}")
 	private String address;
 
 	@NotNull(message = "{customer.gender.notPresent}")
-	@Pattern(regexp = "Male|Female|Other",message = "{customer.gender.invalid}")
+	@Pattern(regexp = "Male|Female|Other", message = "{customer.gender.invalid}")
 	private String gender;
-	
-	@NotNull(message = "{customer.role.notPresent}")
-//	@Pattern(regexp = "Admin|User",message ="{customer.role.invalid}")
+
 	private Roles roles;
-
-	
-	
-
-
-
 
 	public String getCustomerId() {
 		return customerId;
@@ -107,13 +100,6 @@ public class CustomerDto {
 
 	public void setGender(String gender) {
 		this.gender = gender;
-	}
-
-	@Override
-	public String toString() {
-		return "CustomerDto [mobileNumber=" + mobileNumber + ", customerId=" + customerId + ", name=" + name
-				+ ", emailId=" + emailId + ", password=" + password + ", address=" + address + ", gender=" + gender
-				+ ", roles=" + roles + "]";
 	}
 
 }

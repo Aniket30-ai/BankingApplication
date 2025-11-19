@@ -19,8 +19,6 @@ public class LoggingAspect {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoggingAspect.class);
 
-//	 @Before("execution(* com.example.service.*.*(..))")
-//    @Pointcut("execution(public void com.nihilent.bankingApplication.service.*.*(..))")
 	@Pointcut("execution(* com.nihilent.bankingApplication.service.*.*(..))")
 	public void allServiceMethods() {
 	}

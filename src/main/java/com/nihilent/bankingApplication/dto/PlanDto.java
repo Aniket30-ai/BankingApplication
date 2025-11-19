@@ -2,11 +2,9 @@ package com.nihilent.bankingApplication.dto;
 
 public class PlanDto {
 
-
 	private Long planId;
 
 	private String planName;
-
 
 	private OperatorDto operators;
 
@@ -43,7 +41,5 @@ public class PlanDto {
 	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
-	
-	
-	
+
 }

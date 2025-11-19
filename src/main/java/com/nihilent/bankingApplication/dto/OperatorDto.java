@@ -4,46 +4,34 @@ import java.util.List;
 
 public class OperatorDto {
 
-	
-	
-	
-	    private Long operatorId;
+	private Long operatorId;
 
-	    private String name;
+	private String name;
 
+	private List<PlanDto> plans;
 
-	    private List<PlanDto> plans;
+	public Long getOperatorId() {
+		return operatorId;
+	}
 
+	public void setOperatorId(Long operatorId) {
+		this.operatorId = operatorId;
+	}
 
-		public Long getOperatorId() {
-			return operatorId;
-		}
+	public String getName() {
+		return name;
+	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
 
-		public void setOperatorId(Long operatorId) {
-			this.operatorId = operatorId;
-		}
+	public List<PlanDto> getPlans() {
+		return plans;
+	}
 
+	public void setPlans(List<PlanDto> plans) {
+		this.plans = plans;
+	}
 
-		public String getName() {
-			return name;
-		}
-
-
-		public void setName(String name) {
-			this.name = name;
-		}
-
-
-		public List<PlanDto> getPlans() {
-			return plans;
-		}
-
-
-		public void setPlans(List<PlanDto> plans) {
-			this.plans = plans;
-		}
-	    
-	    
-	    
 }

@@ -126,8 +126,12 @@ post Mapping ->  http://localhost:8080/NihilentBank/applyLoan
 
 
 ------------------------------------------------------------------------------
+actuator endpoints
 
 
+http://localhost:8086/actuator/metrics
+
+http://localhost:8080/actuator/env
 
 
 

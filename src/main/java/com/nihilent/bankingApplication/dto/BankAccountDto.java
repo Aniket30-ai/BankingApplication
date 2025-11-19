@@ -2,46 +2,41 @@ package com.nihilent.bankingApplication.dto;
 
 import java.time.LocalDate;
 
-import org.springframework.validation.annotation.Validated;
-
 import com.nihilent.bankingApplication.entity.AccountStatus;
 import com.nihilent.bankingApplication.entity.AccountType;
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 
 public class BankAccountDto {
 
-	@NotNull(message = "{bankAccount.accountNumber.notPresent}")
+	
 	private Long accountNumber;
 
-	@NotNull(message = "{bankAccount.bankName.notPresent}")
+	
 	private String bankName;
+
 	
-	@NotNull(message = "{bankAccount.ifscCode.notPresent}")
 	private String ifscCode;
-	
-//	@NotNull(message = "{bankAccount.accountType.notPresent}")
+
 	private AccountType accountType;
-	
+
 	@NotNull(message = "{bankAccount.balance.notPresent}")
 	private Double balance;
-	
+
 	@NotNull(message = "{bankAccount.panCard.notPresent}")
 	private String panCard;
-	
+
 	@NotNull(message = "{bankAccount.accountStatus.notPresent}")
 	private AccountStatus accountStatus;
-	
+
 	private LocalDate openingDate;
 
 	@NotNull(message = "{bankAccount.customer.notPresent}")
-//	@Valid
+
 	private CustomerDto customerDto;
-	
-	
+
 	private String adharCard;
-	
+
 	private LocalDate dateOfBirth;
 
 	public String getAdharCard() {

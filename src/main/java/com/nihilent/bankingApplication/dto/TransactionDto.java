@@ -2,31 +2,41 @@ package com.nihilent.bankingApplication.dto;
 
 import java.time.LocalDateTime;
 
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
+
 public class TransactionDto {
 
 	private String transactionId;
 
-//	@NotNull(message = "{}")
+	@NotNull(message = "{transaction.modeOfTransaction.notPresent}")
 	private String modeOfTransaction;
-//	private Long receivingMobileNumber;
+
+	@NotNull(message = "{transaction.receivingAccountNumber.notPresent}")
 	private Long receivingAccountNumber;
+
+	@NotNull(message = "{transaction.amount.notPresent}")
+	@Positive(message = "{transaction.amount.positive}")
 	private Double amount;
-//	private Long senderMobileNumber;
+
+	@NotNull(message = "{transaction.senderAccountNumber.notPresent}")
 	private Long senderAccountNumber;
+
+	@Size(max = 255, message = "{transaction.remark.size}")
 	private String remark;
+
 	private LocalDateTime transactionTime;
+
 	private Double closingBalance;
-	
+
+	@NotNull(message = "{transaction.transactionType.notPresent}")
 	private String transactionType;
-	
-	
 
 	private Double credit;
-	
+
 	private Double debit;
-	
-	
-	
+
 	public Double getCredit() {
 		return credit;
 	}
@@ -67,8 +77,6 @@ public class TransactionDto {
 		this.modeOfTransaction = modeOfTransaction;
 	}
 
-	
-
 	public Long getReceivingAccountNumber() {
 		return receivingAccountNumber;
 	}
@@ -84,8 +92,6 @@ public class TransactionDto {
 	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
-
-
 
 	public Long getSenderAccountNumber() {
 		return senderAccountNumber;
@@ -119,7 +125,4 @@ public class TransactionDto {
 		this.closingBalance = closingBalance;
 	}
 
-	
-	
-	
 }

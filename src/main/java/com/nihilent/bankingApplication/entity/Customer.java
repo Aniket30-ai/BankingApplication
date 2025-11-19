@@ -14,17 +14,10 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	
+
 	private Long mobileNumber;
 
-//	@Column(name = "id")
-	
-	
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	 @Column(unique = true)
+	@Column(unique = true)
 	private String customerId;
 
 	private String name;
@@ -40,8 +33,6 @@ public class Customer {
 	@Enumerated(value = EnumType.STRING)
 	private Roles role;
 
-
-
 	public String getName() {
 		return name;
 	}
@@ -49,8 +40,6 @@ public class Customer {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-
 
 	public String getCustomerId() {
 		return customerId;

@@ -11,8 +11,8 @@ import com.nihilent.bankingApplication.entity.Customer;
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
 	Optional<Customer> findByMobileNumber(Long mobileNumber);
-	
+
 	Optional<Customer> findByEmailId(String emailId);
-	
+
 	Optional<Customer> findTopByOrderByIdDesc();
 }

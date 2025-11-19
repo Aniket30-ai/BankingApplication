@@ -1,15 +1,15 @@
 package com.nihilent.bankingApplication.service;
 
-import com.nihilent.bankingApplication.dto.OperatorDto;
 import com.nihilent.bankingApplication.dto.PlanDto;
+import com.nihilent.bankingApplication.exception.NihilentBankException;
 
 public interface PlanService {
 
-	public void createPlan(PlanDto planDto);
+	public void createPlan(PlanDto planDto) throws NihilentBankException;
 
-	public void updatePlan(PlanDto planDto);
+	public void updatePlan(PlanDto planDto) throws NihilentBankException;
 
-	public void deletePlan(Long planId);
+	public void deletePlan(Long planId) throws NihilentBankException;
 
-	public void getplan(Long planId);
+	public void getplan(Long planId) throws NihilentBankException;
 }

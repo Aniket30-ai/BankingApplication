@@ -3,6 +3,10 @@ package com.nihilent.bankingApplication.service;
 import java.util.List;
 
 import com.nihilent.bankingApplication.dto.BankAccountDto;
+import com.nihilent.bankingApplication.dto.BankAccountRequestDto;
+import com.nihilent.bankingApplication.entity.AccountRequestStatus;
+import com.nihilent.bankingApplication.entity.BankAccountRequest;
+import com.nihilent.bankingApplication.entity.LoanStatus;
 import com.nihilent.bankingApplication.exception.NihilentBankException;
 
 public interface BankAccountService {
@@ -14,9 +18,20 @@ public interface BankAccountService {
 	public List<BankAccountDto> showAllAcounts(Long mobileNumber) throws NihilentBankException;
 
 	public Double getBalance(Long accountNumber) throws NihilentBankException;
+
 	public List<BankAccountDto> showAllAcountsDetails() throws NihilentBankException;
-	
+
 	public BankAccountDto getAccountDetail(Long mobileNumber) throws NihilentBankException;
+
 	public String accountDelete(Long accountNumber) throws NihilentBankException;
+
+	public String applyBankAccount(Long mobileNumber, String name, String accountType) throws NihilentBankException;
+
+	public List<BankAccountRequest> getAllAccountRequest() throws NihilentBankException;
+
+	public BankAccountRequest updateAccountStatus(Long accountId, AccountRequestStatus status)
+			throws NihilentBankException;
+
+	public BankAccountRequestDto getAccountStatus(Long mobileNumber) throws NihilentBankException;
 
 }

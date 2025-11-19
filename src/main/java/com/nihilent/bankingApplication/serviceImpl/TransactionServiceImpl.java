@@ -14,27 +14,21 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
-import org.elasticsearch.action.bulk.BulkRequest;
-import org.elasticsearch.action.bulk.BulkResponse;
-import org.elasticsearch.action.index.IndexRequest;
-import org.elasticsearch.client.RequestOptions;
-import org.elasticsearch.client.RestHighLevelClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nihilent.bankingApplication.Validation.AccountValidation;
+//import com.nihilent.bankingApplication.config.KafkaConstant;
 import com.nihilent.bankingApplication.dto.TransactionDto;
 import com.nihilent.bankingApplication.entity.BankAccount;
 import com.nihilent.bankingApplication.entity.DigitalBankAccount;
@@ -46,53 +40,81 @@ import com.nihilent.bankingApplication.repository.DigitalBankRepository;
 import com.nihilent.bankingApplication.repository.TransactionRepository;
 import com.nihilent.bankingApplication.service.TransactionService;
 
-//import co.elastic.clients.elasticsearch.ElasticsearchClient;
 @Service
 @Transactional
 public class TransactionServiceImpl implements TransactionService {
 
 	private static final Logger logger = LoggerFactory.getLogger(TransactionServiceImpl.class);
 
-	@Autowired
-	private BankAccountRepository accountRepository;
+	private final BankAccountRepository accountRepository;
 
-	@Autowired
-	private CustomerRepository customerRepository;
+	private final CustomerRepository customerRepository;
 
-	@Autowired
-	private DigitalBankRepository digitalBankRepository;
+	private final DigitalBankRepository digitalBankRepository;
 
-	@Autowired
-	private TransactionRepository transactionRepository;
+	private final TransactionRepository transactionRepository;
 
-	private static final String INDEX = "transaction";
-
-	@Autowired
-	private RestHighLevelClient client;
-
-	@Autowired
 	private ObjectMapper objectMapper;
 
-//
-//    @Autowired
-//    public ElasticCustomerData(RestHighLevelClient client) {
-//        this.client = client;
-//        this.objectMapper = new ObjectMapper();
-//    }
+	private final KafkaTemplate<String, Transaction> kafkaTemplate;
 
-	@Autowired
-	private KafkaTemplate<String, Transaction> kafkaTemplate;
+	private final AccountValidation accountValidation;
 
-	@Autowired
-	private AccountValidation accountValidation;
+	public TransactionServiceImpl(BankAccountRepository accountRepository, CustomerRepository customerRepository,
+			DigitalBankRepository digitalBankRepository, TransactionRepository transactionRepository
+
+			, ObjectMapper objectMapper, AccountValidation accountValidation,
+			KafkaTemplate<String, Transaction> kafkaTemplate
+
+	) {
+
+		this.accountRepository = accountRepository;
+		this.customerRepository = customerRepository;
+		this.digitalBankRepository = digitalBankRepository;
+		this.transactionRepository = transactionRepository;
+		this.objectMapper = objectMapper;
+
+		this.accountValidation = accountValidation;
+		this.kafkaTemplate = kafkaTemplate;
+
+	}
+
+	@Value("${TransactionService.Invalid_SenderAccountNumber}")
+	private String invalidSenderAccountNumber;
+
+	@Value("${TransactionService.Invalid_ReceiverAccountNumber}")
+	private String invalidReceiverAccountNumber;
+
+	@Value("${TransactionService.InsufficientBalance}")
+	private String insufficientBalance;
+
+	@Value("${TransactionService.Transaction_Credit}")
+	private String transactionCredit;
+
+	@Value("${TransactionService.Transaction_Debit}")
+	private String transactionDebit;
+
+	@Value("${TransactionService.Transaction_Success}")
+	private String transactionSuccess;
+
+	@Value("${TransactionService.Transaction_Limit}")
+	private String transactionLimit;
+
+	@Value("${TransactionService.Invalid_SenderUpiId}")
+	private String invalidSenderUpiId;
+
+	@Value("${TransactionService.Invalid_ReceiverUpiId}")
+	private String invalidReceiverUpiId;
+
+	@Value("${KAFKA_TOPIC}")
+	private String kafkaTopic;
 
 	@Override
+	@Transactional(rollbackFor = NihilentBankException.class)
 	public String fundTransfer(TransactionDto transactionDto) throws NihilentBankException {
 		// TODO Auto-generated method stub
 
 		Long receivingAccountNumber = transactionDto.getReceivingAccountNumber();
-
-
 
 		accountValidation.accountNumberLength(transactionDto.getSenderAccountNumber(),
 				transactionDto.getReceivingAccountNumber());
@@ -104,19 +126,19 @@ public class TransactionServiceImpl implements TransactionService {
 				.findByAccountNumber(transactionDto.getReceivingAccountNumber());
 
 		BankAccount bankAccount = receiverAccountNumber
-				.orElseThrow(() -> new NihilentBankException("Invalid receiver Account Number"));
+				.orElseThrow(() -> new NihilentBankException(invalidReceiverAccountNumber));
 
 		Optional<BankAccount> senderAccountNumber = accountRepository
 				.findByAccountNumber(transactionDto.getSenderAccountNumber());
 
 		BankAccount bankAccount2 = senderAccountNumber
-				.orElseThrow(() -> new NihilentBankException("Invalid sender account number"));
+				.orElseThrow(() -> new NihilentBankException(invalidSenderAccountNumber));
 
 		if (bankAccount2.getBalance() < transactionDto.getAmount()) {
-			logger.error("Transaction failed due to insufficient balance");
+			logger.error(insufficientBalance);
 			;
 
-			throw new NihilentBankException("Transaction failed due to insufficient balance");
+			throw new NihilentBankException(insufficientBalance);
 
 		}
 
@@ -132,7 +154,6 @@ public class TransactionServiceImpl implements TransactionService {
 		String transactionId1 = "TNX" + integer1.toString();
 		String transactionId2 = "TNX" + integer2.toString();
 
-	
 		Transaction transactionDebit = new Transaction();
 
 		transactionDebit.setTransactionId(transactionId1);
@@ -142,28 +163,30 @@ public class TransactionServiceImpl implements TransactionService {
 		transactionDebit.setAmount(transactionDto.getAmount());
 		transactionDebit.setReceivingAccountNumber(transactionDto.getReceivingAccountNumber());
 
-
 		transactionDebit.setRemark(transactionDto.getRemark());
 		transactionDebit.setSenderAccountNumber(transactionDto.getSenderAccountNumber());
 
-
-
 		transactionDebit.setDebit(transactionDto.getAmount());
-
 
 		transactionDebit.setTransactionType("DEBIT");
 
 		transactionDebit.setClosingBalance(bankAccount2.getBalance());
-		transactionRepository.save(transactionDebit);
+		Transaction save = transactionRepository.save(transactionDebit);
+
+		String transactionId3 = "";
+		if (save.getTransactionType().equalsIgnoreCase("DEBIT")) {
+			transactionId3 = save.getTransactionId();
+
+		}
 
 		try {
 			transactionRepository.save(transactionDebit);
-			System.out.println("transaction debit saved");
+
 		} catch (Exception e) {
 
-			logger.error("Failed to save debit transaction: {}", e.getMessage());
+			logger.error("Failed to save debit transaction", e.getMessage());
 		}
-		logger.info("transaction debit");
+		logger.info(this.transactionDebit);
 
 		Transaction transactionCredit = new Transaction();
 
@@ -174,17 +197,15 @@ public class TransactionServiceImpl implements TransactionService {
 		transactionCredit.setAmount(transactionDto.getAmount());
 		transactionCredit.setReceivingAccountNumber(transactionDto.getReceivingAccountNumber());
 
-
 		transactionCredit.setRemark(transactionDto.getRemark());
 		transactionCredit.setSenderAccountNumber(transactionDto.getSenderAccountNumber());
-
 
 		transactionCredit.setTransactionType("CREDIT");
 		transactionCredit.setCredit(transactionDto.getAmount());
 		transactionCredit.setClosingBalance(bankAccount.getBalance());
 		transactionRepository.save(transactionCredit);
-		logger.info("Transaction Creadit success");
-		return "Transaction success";
+		logger.info(this.transactionCredit);
+		return transactionId3;
 	}
 
 	@Override
@@ -200,12 +221,10 @@ public class TransactionServiceImpl implements TransactionService {
 			transactionDto.setAmount(transaction.getAmount());
 			transactionDto.setModeOfTransaction(transaction.getModeOfTransaction());
 			transactionDto.setReceivingAccountNumber(transaction.getReceivingAccountNumber());
-//			transactionDto.setReceivingMobileNumber(transaction.getReceivingMobileNumber());
 
 			transactionDto.setRemark(transaction.getRemark());
 			transactionDto.setSenderAccountNumber(transaction.getSenderAccountNumber());
 
-//			transactionDto.setSenderMobileNumber(transaction.getSenderMobileNumber());
 			transactionDto.setTransactionId(transaction.getTransactionId());
 			transactionDto.setTransactionTime(transaction.getTransactionTime());
 			transactionDto.setTransactionType(transaction.getTransactionType());
@@ -220,11 +239,8 @@ public class TransactionServiceImpl implements TransactionService {
 	public List<TransactionDto> transactionDetails(Long accountNumber) throws NihilentBankException {
 		// TODO Auto-generated method stub
 
-
 		List<Transaction> list = transactionRepository.findBySenderAccountNumberOrReceivingAccountNumber(accountNumber,
 				accountNumber);
-
-
 
 		List<Transaction> collect = list.stream()
 				.filter(tx -> (accountNumber.equals(tx.getSenderAccountNumber())
@@ -241,10 +257,8 @@ public class TransactionServiceImpl implements TransactionService {
 			transactionDto.setModeOfTransaction(transaction.getModeOfTransaction());
 			transactionDto.setReceivingAccountNumber(transaction.getReceivingAccountNumber());
 
-
 			transactionDto.setRemark(transaction.getRemark());
 			transactionDto.setSenderAccountNumber(transaction.getSenderAccountNumber());
-
 
 			transactionDto.setTransactionId(transaction.getTransactionId());
 			transactionDto.setTransactionTime(transaction.getTransactionTime());
@@ -261,7 +275,7 @@ public class TransactionServiceImpl implements TransactionService {
 	}
 
 	public void parseFileAndSave(MultipartFile file) throws NumberFormatException, IOException, NihilentBankException {
-		List<Transaction> txns = new ArrayList<>();
+		
 		List<String> failedTransactions = new ArrayList<>();
 
 		try (BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
@@ -274,10 +288,7 @@ public class TransactionServiceImpl implements TransactionService {
 				record.setTransactionId(transactionId);
 
 				if (parts.length < 4) {
-//		                record.setStatus("FAILED");
-//		                record.setErrorMessage("Invalid format: Less than 4 fields");
-//		                kafkaProducerService.send(record);
-//		            	kafkaTemplate.send(KafkaConstant.TOPIC,record);
+
 					failedTransactions.add(line);
 					continue;
 				}
@@ -299,6 +310,7 @@ public class TransactionServiceImpl implements TransactionService {
 					if (!senderOpt.isPresent() || !receiverOpt.isPresent()) {
 						record.setStatus("FAILED");
 						record.setErrorMesssage("Invalid sender or receiver account");
+						record.setTransactionTime(LocalDateTime.now());
 						failedTransactions.add(line + " --> Invalid account");
 					} else {
 						BankAccount sender = senderOpt.get();
@@ -307,75 +319,38 @@ public class TransactionServiceImpl implements TransactionService {
 						if (sender.getBalance() < amount) {
 							record.setStatus("FAILED");
 							record.setErrorMesssage("Insufficient balance");
+							record.setTransactionTime(LocalDateTime.now());
 							failedTransactions.add(line + " --> Insufficient balance");
 						} else {
-							// All good — update and save transaction
-							sender.setBalance(sender.getBalance() - amount);
-							receiver.setBalance(receiver.getBalance() + amount);
-
-							Transaction txn = new Transaction();
-							txn.setTransactionId(transactionId);
-							txn.setSenderAccountNumber(senderAccNum);
-							txn.setReceivingAccountNumber(receiverAccNum);
-							txn.setAmount(amount);
-							txn.setRemark(remark);
-							txn.setTransactionTime(LocalDateTime.now());
-
-							txns.add(txn);
+	
+							TransactionDto transactionDto = new TransactionDto();
+							
+							transactionDto.setSenderAccountNumber(senderAccNum);
+							transactionDto.setReceivingAccountNumber(receiverAccNum);
+							transactionDto.setAmount(amount);
+							transactionDto.setRemark(remark);
+							transactionDto.setModeOfTransaction("Bulk Upload");
+                            fundTransfer(transactionDto);
+				
 							record.setStatus("SUCCESS");
+							record.setTransactionTime(LocalDateTime.now());
 						}
 					}
 				} catch (Exception e) {
 					record.setStatus("FAILED");
 					record.setErrorMesssage("Parse error: " + e.getMessage());
+					record.setTransactionTime(LocalDateTime.now());
 					failedTransactions.add(line + " --> Parse error");
 				}
 
 				// ✅ Send every record to Kafka (success or failure)
-//		            kafkaTemplate.send(KafkaConstant.TOPIC,record);
+				kafkaTemplate.send(kafkaTopic, record);
 
-//		            kafkaProducerService.send(record);
+				;
 			}
 		}
 
-		BulkRequest bulkRequest = new BulkRequest();
-
-		for (Transaction tnx : txns) {
-			Map<String, Object> doc = objectMapper.convertValue(tnx, new TypeReference<>() {
-			});
-			ObjectMapper mapper = new ObjectMapper();
-			IndexRequest indexRequest = new IndexRequest(INDEX).id(tnx.getTransactionId()) // This becomes _id
-					.source(doc); // ✅ this becomes _source
-
-			logger.info("Uploading JSON: " + objectMapper.writeValueAsString(doc));
-
-			bulkRequest.add(indexRequest);
-			
-			logger.info("data upload");
-
-			
-
-		}
-
-		transactionRepository.saveAll(txns);
-		logger.info("Data saved");
 		saveFailedTransactionsToFile(failedTransactions);
-
-
-//          BulkResponse bulkResponse = client.bulk(bulkRequest, RequestOptions.DEFAULT);
-//
-
-		try {
-			BulkResponse response = client.bulk(bulkRequest, RequestOptions.DEFAULT);
-	
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-//	        if (bulkResponse.hasFailures()) {
-//	            throw new IOException("Bulk upload failures: " + bulkResponse.buildFailureMessage());
-//	        } else {
-//	            System.out.println("✅ Bulk upload successful");
-//	        }
 
 	}
 
@@ -406,7 +381,6 @@ public class TransactionServiceImpl implements TransactionService {
 									&& "CREDIT".equalsIgnoreCase(tx.getTransactionType())))
 					.collect(Collectors.toList());
 
-			
 			return collect;
 
 		} else {
@@ -436,22 +410,19 @@ public class TransactionServiceImpl implements TransactionService {
 		Double maxDailyLimit = 50000.0;
 
 		if ((totalSentToday + amount) > maxDailyLimit) {
-			System.out.println("Daily transaction limit of 50,000 exceeded.");
-			throw new NihilentBankException("Daily transaction limit of 50,000 exceeded.");
+			logger.info(transactionLimit);
+			throw new NihilentBankException(transactionLimit);
 		}
 
-	
 		Optional<DigitalBankAccount> senderUpiId = digitalBankRepository.findByDigitalBankId(senderUpiID);
 
 		Optional<DigitalBankAccount> reciverUpiId = digitalBankRepository.findByDigitalBankId(recevierUpiId);
 
-
-
 		DigitalBankAccount senderDigitalBankAccount = senderUpiId
-				.orElseThrow(() -> new NihilentBankException("Invalid sender UPI ID"));
+				.orElseThrow(() -> new NihilentBankException(invalidSenderUpiId));
 
 		DigitalBankAccount reciverDigitalBankAccount = reciverUpiId
-				.orElseThrow(() -> new NihilentBankException("Invalid reciver UPI ID"));
+				.orElseThrow(() -> new NihilentBankException(invalidReceiverUpiId));
 
 		Double senderBalance = senderDigitalBankAccount.getBankAccount().getBalance();
 
@@ -461,10 +432,8 @@ public class TransactionServiceImpl implements TransactionService {
 
 		Long reciverAccountNumber = reciverDigitalBankAccount.getBankAccount().getAccountNumber();
 
-	
-
 		if (senderBalance < amount) {
-			throw new NihilentBankException("Invalid Balance");
+			throw new NihilentBankException(insufficientBalance);
 		}
 
 		BankAccount reciverBankAccount = reciverDigitalBankAccount.getBankAccount();
@@ -499,8 +468,13 @@ public class TransactionServiceImpl implements TransactionService {
 		transactionDebit.setRemark(remark);
 		transactionDebit.setClosingBalance(senderAccount.getBalance());
 
+		Transaction save = transactionRepository.save(transactionDebit);
 
-		transactionRepository.save(transactionDebit);
+		String transactionId3 = "";
+		if (save.getTransactionType().equalsIgnoreCase("DEBIT")) {
+			transactionId3 = save.getTransactionId();
+
+		}
 
 		// for reciver
 
@@ -523,10 +497,10 @@ public class TransactionServiceImpl implements TransactionService {
 		transactionCredit.setCredit(amount);
 		transactionCredit.setClosingBalance(reciverAccout.getBalance());
 		transactionCredit.setRemark(remark);
-	
+
 		transactionRepository.save(transactionCredit);
 
-		return "Transaction Sucess";
+		return transactionId3;
 	}
 
 }

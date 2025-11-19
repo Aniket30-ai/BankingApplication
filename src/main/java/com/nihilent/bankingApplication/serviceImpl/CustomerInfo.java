@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,34 +13,29 @@ import com.nihilent.bankingApplication.entity.Roles;
 
 public class CustomerInfo implements UserDetails {
 
-	
-	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-    private String username;
-    private String password;
-    
-    private Roles role;
-    
-    private List<GrantedAuthority> authorities;
-    
-    public CustomerInfo(Customer customer) {
-    	this.username= customer.getEmailId();
-    	this.password=customer.getPassword();
-    	
-    	  this.role=customer.getRole();
-    	
-    	 this.authorities = List.of(customer.getRole().toString())
-                 .stream()
-                 .map(SimpleGrantedAuthority::new)
-                 .collect(Collectors.toList());
-    	
-    	
-    }
-	
+
+	private String username;
+	private String password;
+
+	private Roles role;
+
+	private List<GrantedAuthority> authorities;
+
+	public CustomerInfo(Customer customer) {
+		this.username = customer.getEmailId();
+		this.password = customer.getPassword();
+
+		this.role = customer.getRole();
+
+		this.authorities = List.of(customer.getRole().toString()).stream().map(SimpleGrantedAuthority::new)
+				.collect(Collectors.toList());
+
+	}
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
@@ -60,30 +54,28 @@ public class CustomerInfo implements UserDetails {
 		return username;
 	}
 
-
-
-	
-	
 	@Override
 	public boolean isAccountNonExpired() {
 		// TODO Auto-generated method stub
 		return true;
 	}
+
 	@Override
 	public boolean isAccountNonLocked() {
 		// TODO Auto-generated method stub
 		return true;
 	}
-	
+
 	@Override
 	public boolean isCredentialsNonExpired() {
 		// TODO Auto-generated method stub
 		return true;
 	}
+
 	@Override
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
 		return true;
 	}
-	
+
 }

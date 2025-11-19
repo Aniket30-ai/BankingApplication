@@ -9,13 +9,12 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 
-
 @Entity
 public class DigitalBankAccount {
 
 	@Id
 	private String digitalBankId;
-	
+
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "mobile_number", unique = true)
 	private Customer customer;
@@ -25,13 +24,10 @@ public class DigitalBankAccount {
 	private BankAccount bankAccount;
 
 	private AccountType accountType;
-	
-	
-	
-    @Lob
-    @Column(columnDefinition = "LONGBLOB") // for MySQL, or use appropriate blob type
-    private byte[] qrCodeImage;
 
+	@Lob
+	@Column(columnDefinition = "LONGBLOB") // for MySQL, or use appropriate blob type
+	private byte[] qrCodeImage;
 
 	public Customer getCustomer() {
 		return customer;
@@ -73,6 +69,4 @@ public class DigitalBankAccount {
 		this.qrCodeImage = qrCodeImage;
 	}
 
-	
-	
 }

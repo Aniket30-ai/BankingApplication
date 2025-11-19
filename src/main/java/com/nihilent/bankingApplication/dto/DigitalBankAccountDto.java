@@ -4,8 +4,6 @@ import com.nihilent.bankingApplication.entity.AccountType;
 
 public class DigitalBankAccountDto {
 
-	
-	
 	private String digitalBankId;
 
 	private CustomerDto customerDto;
@@ -13,8 +11,8 @@ public class DigitalBankAccountDto {
 	private BankAccountDto bankAccountDto;
 
 	private AccountType accountType;
-	
-	 private byte[] qrCodeImage;
+
+	private byte[] qrCodeImage;
 
 	public CustomerDto getCustomerDto() {
 		return customerDto;
@@ -47,8 +45,6 @@ public class DigitalBankAccountDto {
 	public void setDigitalBankId(String digitalBankId) {
 		this.digitalBankId = digitalBankId;
 	}
-	
-	
 
 	public byte[] getQrCodeImage() {
 		return qrCodeImage;
@@ -63,7 +59,5 @@ public class DigitalBankAccountDto {
 		return "DigitalBankAccountDto [digitalBankId=" + digitalBankId + ", customerDto=" + customerDto
 				+ ", bankAccountDto=" + bankAccountDto + ", accountType=" + accountType + "]";
 	}
-
-
 
 }

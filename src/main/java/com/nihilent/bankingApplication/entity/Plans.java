@@ -39,8 +39,6 @@ public class Plans {
 		this.planName = planName;
 	}
 
-	
-
 	public Double getAmount() {
 		return amount;
 	}
@@ -56,8 +54,5 @@ public class Plans {
 	public void setOperators(Operators operators) {
 		this.operators = operators;
 	}
-	
-	
-	
-	
+
 }

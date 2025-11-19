@@ -23,19 +23,6 @@ public class ExceptionControllerAdvice {
 	@Autowired
 	private Environment environment;
 
-//	@ExceptionHandler(NihilentBankException.class)
-//	public ResponseEntity<ErrorMessage> handleException(NihilentBankException bankException) {
-//
-//		ErrorMessage errorMessage = new ErrorMessage();
-//
-//		errorMessage.setCode(HttpStatus.BAD_REQUEST.value());
-//		errorMessage.setMessage(environment.getProperty(bankException.getMessage()));
-//		errorMessage.setTimeStamp(LocalDateTime.now().toString());
-//
-//		return new ResponseEntity<ErrorMessage>(errorMessage, HttpStatus.BAD_REQUEST);
-//
-//	}
-
 	@ExceptionHandler(NihilentBankException.class)
 	public ResponseEntity<ErrorMessage> handleUnauthorized(NihilentBankException ex) {
 		ErrorMessage response = new ErrorMessage();
@@ -60,35 +47,22 @@ public class ExceptionControllerAdvice {
 
 		return new ResponseEntity<ErrorMessage>(errorMessage, HttpStatus.BAD_REQUEST);
 	}
-	
-	
+
 	@ExceptionHandler(ConstraintViolationException.class)
-	public ResponseEntity<Map<String,String>> handleConstraintViolation(ConstraintViolationException exception) {
+	public ResponseEntity<Map<String, String>> handleConstraintViolation(ConstraintViolationException exception) {
 
 		ErrorMessage errorMessage = new ErrorMessage();
 
 		errorMessage.setCode(HttpStatus.BAD_REQUEST.value());
 
-//		errorMessage.setMessage(exception.getBindingResult().getAllErrors().stream().map(ex -> ex.getDefaultMessage())
-//				.collect(Collectors.joining(",")));
-//		errorMessage.setMessage(exception.getConstraintViolations().forEach(voilation->voilation.getPropertyPath().toString().get));
-		
-		
-		
-		
-		
 		Map<String, String> errors = new HashMap<>();
 		exception.getConstraintViolations().forEach(violation -> {
-            String field = violation.getPropertyPath().toString();
-            errors.put(field, violation.getMessage());
-        });
-        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
+			String field = violation.getPropertyPath().toString();
+			errors.put(field, violation.getMessage());
+		});
+		return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
 
-//		errorMessage.setTimeStamp(LocalDateTime.now().toString());
-//
-//		return new ResponseEntity<ErrorMessage>(errorMessage, HttpStatus.BAD_REQUEST);
 	}
-
 
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<ErrorMessage> exception(Exception exception) {

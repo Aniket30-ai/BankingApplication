@@ -34,5 +34,4 @@ public class BeneficiaryAccount {
 		this.bankAccount = bankAccount;
 	}
 
-	
 }

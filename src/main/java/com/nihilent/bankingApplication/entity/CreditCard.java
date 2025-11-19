@@ -9,35 +9,29 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
-
 @Entity
 public class CreditCard {
 
-	
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    private String userId;
+	private String userId;
 
-    @Enumerated(EnumType.STRING)
-    private Status status;
+	@Enumerated(EnumType.STRING)
+	private Status status;
 
-    private String cardNumber;
-    private String cardExpiry;
+	private String cardNumber;
+	private String cardExpiry;
 
-    public enum Status {
-        PENDING,
-        APPROVED,
-        REJECTED
-    }
+	public enum Status {
+		PENDING, APPROVED, REJECTED
+	}
 
-    
-    @ManyToOne
+	@ManyToOne
 	@JoinColumn(name = "account_number", nullable = false)
 	private BankAccount bankAccount;
-    
-    
+
 	public Long getId() {
 		return id;
 	}
@@ -85,9 +79,5 @@ public class CreditCard {
 	public void setBankAccount(BankAccount bankAccount) {
 		this.bankAccount = bankAccount;
 	}
-    
-    
-    
-    
 
 }

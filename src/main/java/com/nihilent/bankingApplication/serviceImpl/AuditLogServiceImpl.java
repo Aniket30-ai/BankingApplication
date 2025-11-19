@@ -2,38 +2,49 @@ package com.nihilent.bankingApplication.serviceImpl;
 
 import java.time.LocalDateTime;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.nihilent.bankingApplication.config.KafkaConstant;
 import com.nihilent.bankingApplication.entity.AuditLog;
 import com.nihilent.bankingApplication.entity.Transaction;
+import com.nihilent.bankingApplication.exception.NihilentBankException;
 import com.nihilent.bankingApplication.repository.AuditRepository;
 
 @Service
 public class AuditLogServiceImpl {
 
-	@Autowired
-	private AuditRepository auditRepository;
-	
-	
-//	 @KafkaListener(topics = KafkaConstant.TOPIC, groupId = KafkaConstant.GROUP_ID,containerFactory = "kafkaListnerContainerFactory")
-	    public void consumeTransaction(Transaction record) {
-	        System.out.println("📥 Received Transaction: " + record.getTransactionId());
+	private final AuditRepository auditRepository;
 
-	        AuditLog log = new AuditLog();
-	        log.setTransactionId(record.getTransactionId());
-	        log.setSenderAccountNumber(record.getSenderAccountNumber());
-	        log.setReceivingAccountNumber(record.getReceivingAccountNumber());
-	        log.setAmount(record.getAmount());
-	        log.setRemark(record.getRemark());
-	        log.setStatus(record.getStatus());
-	        log.setErrorMesssage(record.getErrorMesssage());
-	        log.setTransactionTime(LocalDateTime.now());
+	public AuditLogServiceImpl(AuditRepository auditRepository) {
 
-	        auditRepository.save(log);
+		this.auditRepository = auditRepository;
+	}
 
-	        System.out.println("📝 Audit log saved for: " + record.getTransactionId());
-	    }
+	@Value("${KAFKA_TOPIC}")
+	private String kafkaTopic;
+
+	@Value("${GROUP_ID}")
+	private String groupID;
+
+	@Value("${KAFKA_HOST}")
+	private String host;
+
+	@KafkaListener(topics = "kafkaTopic", groupId = "groupID", containerFactory = "kafkaListnerContainerFactory")
+	@Transactional(rollbackFor = NihilentBankException.class)
+	public void consumeTransaction(Transaction record) {
+
+		AuditLog log = new AuditLog();
+		log.setTransactionId(record.getTransactionId());
+		log.setSenderAccountNumber(record.getSenderAccountNumber());
+		log.setReceivingAccountNumber(record.getReceivingAccountNumber());
+		log.setAmount(record.getAmount());
+		log.setRemark(record.getRemark());
+		log.setStatus(record.getStatus());
+		log.setErrorMesssage(record.getErrorMesssage());
+		log.setTransactionTime(LocalDateTime.now());
+		auditRepository.save(log);
+
+	}
 }
