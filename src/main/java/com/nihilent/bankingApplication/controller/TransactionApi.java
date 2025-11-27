@@ -111,7 +111,7 @@ public class TransactionApi {
 	    public ResponseEntity<?> uploadFile(@RequestParam("file") MultipartFile file) {
 		 
 		 
-		 System.out.println("transaction upload");
+		
 	        try {
 	        	
 	        	transactionService.parseFileAndSave(file);
@@ -144,17 +144,13 @@ public class TransactionApi {
 	         @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate endDate
 	 ) throws NihilentBankException, IOException {
 
-		 System.out.println(accountNumber);
-		 System.out.println(startDate);
-		 System.out.println(endDate);
+		
 	     // Handle null dates - if null, assign wide range
 	     LocalDateTime startDateTime = (startDate != null) ? startDate.atStartOfDay() : LocalDateTime.of(1970, 1, 1, 0, 0);
 	     LocalDateTime endDateTime = (endDate != null) ? endDate.atTime(LocalTime.MAX) : LocalDateTime.now();
 
 	     
-	     
-	     System.out.println(startDateTime);
-	     System.out.println(endDateTime);
+	   
 	     // Fetch filtered transactions
 	     List<Transaction> transactions = transactionService.getTransactionsByAccountNumberAndDateRange(accountNumber, startDateTime, endDateTime);
 
@@ -282,19 +278,23 @@ public class TransactionApi {
 	     for (Transaction tx : transactions) {
 	         table.addCell(String.valueOf(tx.getTransactionId())).setFontSize(8);
 	         
-	         System.out.println(tx.getTransactionId());
+	        
 	         table.addCell(tx.getTransactionTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"))).setFontSize(8);
 	         
 	         String reciverAccount=Optional.ofNullable(tx.getReceivingAccountNumber())
 	        		 .map(String::valueOf)
 	        		 .orElse("");
-	         System.out.println(tx.getTransactionTime());
-	        
-	         System.out.println(tx.getReceivingAccountNumber());
+	       
+	       
 	         table.addCell(reciverAccount).setFontSize(8);
-	         table.addCell(tx.getRemark()).setFontSize(8);
+	         
+
+	         String remark=Optional.ofNullable(tx.getRemark())
+	        		 .map(String::valueOf)
+	        		 .orElse("");
+	         table.addCell(remark).setFontSize(8);
 	        
-	         System.out.println(tx.getRemark());
+	      
 	       
 	         String creditStr = Optional.ofNullable(tx.getCredit())
 		    		    .map(String::valueOf)
@@ -310,9 +310,7 @@ public class TransactionApi {
 	         
 	      
 	         table.addCell(creditStr).setFontSize(8);
-	         System.out.println(creditStr);
 	         table.addCell(debitStr).setFontSize(8);
-	         System.out.println(debitStr);
 
 //	         table.addCell(tx.getDebit().toString()).setFontSize(8);
 	         
@@ -321,12 +319,10 @@ public class TransactionApi {
 		    		    .orElse("");
 
 	         table.addCell(closingBalance).setFontSize(8);
-	         System.out.println(closingBalance);
 	         
-	         System.out.println("************");
 	     }
 	     
-	     System.out.println("Data added into the table");
+	    
 
 	     document.add(table);
 	     
@@ -394,7 +390,7 @@ public class TransactionApi {
 	 public ResponseEntity<String> upiTransfer(@RequestParam String senderUpiId,@RequestParam String reciverUpiId,@RequestParam Double amount, @RequestParam String remark) throws NihilentBankException {
 		 
 		 
-		 System.out.println(remark);
+	
 		 String upiFundTransafer = transactionService.upiFundTransafer(senderUpiId, reciverUpiId, amount,remark);
 		 
 		 

@@ -75,7 +75,6 @@ public class BankPdf implements IEventHandler {
 	        // Draw Logo (left)
 	        logo.setFixedPosition(pageSize.getLeft() + leftMargin, topY -63);
 	        canvas.add(logo);
-
 	        // Title (centered)
 	        canvas.showTextAligned(new Paragraph("E-Banking")
 	                        .setFontSize(12)
