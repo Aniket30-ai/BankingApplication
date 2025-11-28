@@ -1,141 +1,235 @@
 package com.nihilent.BankingApplication.NihilentBank;
 
-import java.time.LocalDate;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.util.ReflectionTestUtils;
 
-import com.nihilent.bankingApplication.dto.BankAccountDto;
-import com.nihilent.bankingApplication.dto.CustomerDto;
-import com.nihilent.bankingApplication.entity.AccountStatus;
-import com.nihilent.bankingApplication.entity.AccountType;
-import com.nihilent.bankingApplication.entity.BankAccount;
-import com.nihilent.bankingApplication.entity.Customer;
-import com.nihilent.bankingApplication.exception.NihilentBankException;
-import com.nihilent.bankingApplication.repository.BankAccountRepository;
-import com.nihilent.bankingApplication.service.BankAccountService;
-import com.nihilent.bankingApplication.serviceImpl.BankAccountServiceImpl;
+import com.nihilent.bank.dto.CustomerDto;
+import com.nihilent.bank.entity.Customer;
+import com.nihilent.bank.entity.Roles;
+import com.nihilent.bank.exception.NihilentBankException;
+import com.nihilent.bank.repository.CustomerRepository;
+import com.nihilent.bank.serviceimpl.CustomerServiceImpl;
 
-@SpringBootTest
-@ExtendWith(MockitoExtension.class)
+//@ExtendWith(MockitoExtension.class)
 class NihilentBankApplicationTests {
 
-//	@Mock
-//	private BankAccountRepository accountRepository;
+	@Mock
+	private CustomerRepository customerRepository;
 
-//	@InjectMocks
-//	private BankAccountService accountService = new BankAccountServiceImpl();
-	
-    @Mock
-    private BankAccountRepository accountRepository;
+	@InjectMocks
+	private CustomerServiceImpl customerService;
 
-    @InjectMocks
-    private BankAccountServiceImpl accountService;
+	@BeforeEach
+	void setup() {
+		MockitoAnnotations.openMocks(this);
+	}
 
-//	public List<BankAccountDto> showAllAcountsDetails() throws NihilentBankException;
+	// -------------------------------------------------------------------------------------------------
+	// ✔ TEST 1 — Register Customer Successfully
+	// -------------------------------------------------------------------------------------------------
+	@Test
+	void testRegisterCustomer_Success() throws Exception {
 
-//	@Test
-//	public void showAllAcountsDetailsTest() throws NihilentBankException {
-//
-////		Integer pageNumber = 0, pageSize = 4;
-////
-////		Pageable pageable = PageRequest.of(pageNumber, pageSize);
-//
-//		List<BankAccount> listOfAccount = new ArrayList<>();
-//
-//		BankAccount bankAccount = new BankAccount();
-//		bankAccount.setAccountNumber(12345678l);
-//		bankAccount.setAccountStatus(AccountStatus.ACTIVE);
-//		bankAccount.setAccountType(AccountType.CURRENT);
-//		bankAccount.setAdharCard("782413123456");
-//		bankAccount.setBalance(2000.00);
-//		bankAccount.setBankName("ICICI Bank");
-////		bankAccount.setDateOfBirth(LocalDate.of(07, 30, 2000));
-//		bankAccount.setIfscCode("GHSGG123");
-//		bankAccount.setPanCard("GHFGSH9892");
-//		bankAccount.setOpeningDate(LocalDate.now());
-//
-//		Customer customer = new Customer();
-//
-//		customer.setAddress("nagpur");
-//		customer.setCustomerId("1");
-//		customer.setEmailId("anikt@gmail.com");
-//		customer.setGender("Male");
-//		customer.setMobileNumber(9823423429l);
-//		customer.setName("Aniket");
-//
-//		bankAccount.setCustomer(customer);
-//
-//		listOfAccount.add(bankAccount);
-//
-////		Page<Medicine> page = new PageImpl<>(listOfMedicine);
-//
-//		Mockito.when(accountRepository.findByMobileNumbers(9823423429l)).thenReturn(listOfAccount);
-//
-//		Assertions.assertDoesNotThrow(() -> accountService.getAccountDetail(12345678l));
-//
-//	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-//	
-//	@ExtendWith(MockitoExtension.class)
-//	public class BankAccountServiceTest {
+		CustomerDto dto = new CustomerDto();
+		dto.setMobileNumber(9876543210L);
+		dto.setEmailId("test@gmail.com");
+		dto.setPassword("password123");
+		dto.setName("Test User");
+		dto.setGender("Male");
+		dto.setAddress("Pune");
 
+		when(customerRepository.findByMobileNumber(9876543210L)).thenReturn(Optional.empty());
 
+		when(customerRepository.save(any(Customer.class))).thenAnswer(inv -> inv.getArgument(0));
 
-	    @Test
-	    public void getAccountDetailTest() throws NihilentBankException {
-	        // Arrange
-	        List<BankAccount> listOfAccounts = new ArrayList<>();
+		ReflectionTestUtils.setField(customerService, "customerRegister", "Customer Registered Successfully");
 
-	        BankAccount bankAccount = new BankAccount();
-	        bankAccount.setAccountNumber(12345678L);
-	        bankAccount.setAccountStatus(AccountStatus.ACTIVE);
-	        bankAccount.setAccountType(AccountType.CURRENT);
-	        bankAccount.setAdharCard("782413123456");
-	        bankAccount.setBalance(2000.00);
-	        bankAccount.setBankName("ICICI Bank");
-	        bankAccount.setIfscCode("GHSGG123");
-	        bankAccount.setPanCard("GHFGSH9892");
-	        bankAccount.setOpeningDate(LocalDate.now());
+		String result = customerService.registerCustomer(dto);
 
-	        Customer customer = new Customer();
-	        customer.setAddress("Nagpur");
-	        customer.setCustomerId("1");
-	        customer.setEmailId("anikt@gmail.com");
-	        customer.setGender("Male");
-	        customer.setMobileNumber(9823423429L);
-	        customer.setName("Aniket");
+		assertEquals("Customer Registered Successfully", result);
+	}
 
-	        bankAccount.setCustomer(customer);
+	// -------------------------------------------------------------------------------------------------
+	// ✔ TEST 2 — Register Customer Already Exists (Exception)
+	// -------------------------------------------------------------------------------------------------
+	@Test
+	void testRegisterCustomer_AlreadyPresent() {
 
-	        listOfAccounts.add(bankAccount);
+		CustomerDto dto = new CustomerDto();
+		dto.setMobileNumber(9999999999L);
 
-	        Mockito.when(accountRepository.findByMobileNumber(9823423429L)).thenReturn(listOfAccounts);
+		Customer existingCustomer = new Customer();
+		existingCustomer.setMobileNumber(9999999999L);
 
-	        // Act & Assert
-//	        Assertions.assertDoesNotThrow(() -> {
-//	            BankAccount dto = accountService.getAccountDetail(12345678L);
-//	            Assertions.assertNotNull(dto);
-//	            Assertions.assertEquals(12345678L, dto.getAccountNumber());
-//	        });
-//	    }
-	    }
+		when(customerRepository.findByMobileNumber(dto.getMobileNumber())).thenReturn(Optional.of(existingCustomer));
 
+		assertThrows(NihilentBankException.class, () -> {
+			customerService.registerCustomer(dto);
+		});
+
+		verify(customerRepository, never()).save(any());
+	}
+
+	// -------------------------------------------------------------------------------------------------
+	// ✔ TEST 3 — LoadUserByUsername Success
+	// -------------------------------------------------------------------------------------------------
+	@Test
+	void testLoadUserByUsername_Success() {
+
+		Customer customer = new Customer();
+		customer.setEmailId("test@gmail.com");
+		customer.setPassword("encodedPassword");
+
+		customer.setRole(Roles.User);
+		when(customerRepository.findByEmailId("test@gmail.com")).thenReturn(Optional.of(customer));
+
+		assertNotNull(customerService.loadUserByUsername("test@gmail.com"));
+	}
+
+	// -------------------------------------------------------------------------------------------------
+	// ✔ TEST 4 — LoadUserByUsername Not Found
+	// -------------------------------------------------------------------------------------------------
+	@Test
+	void testLoadUserByUsername_NotFound() {
+
+		when(customerRepository.findByEmailId("notfound@gmail.com")).thenReturn(Optional.empty());
+
+		assertThrows(RuntimeException.class, () -> {
+			customerService.loadUserByUsername("notfound@gmail.com");
+		});
+	}
+
+	// -------------------------------------------------------------------------------------------------
+	// ✔ TEST 5 — Get Customer Details Success
+	// -------------------------------------------------------------------------------------------------
+	@Test
+	void testGetCustomerDetails_Success() throws Exception {
+
+		Customer customer = new Customer();
+		customer.setMobileNumber(999L);
+		customer.setName("Aniket");
+		customer.setAddress("Pune");
+		customer.setGender("Male");
+		customer.setEmailId("test@gmail.com");
+
+		when(customerRepository.findByMobileNumber(999L)).thenReturn(Optional.of(customer));
+
+		CustomerDto dto = customerService.getCustomerDetails(999L);
+
+		assertEquals("Aniket", dto.getName());
+		assertEquals("Pune", dto.getAddress());
+		assertEquals("test@gmail.com", dto.getEmailId());
+	}
+
+	// -------------------------------------------------------------------------------------------------
+	// ✔ TEST 6 — Get Customer Details — Not Found
+	// -------------------------------------------------------------------------------------------------
+	@Test
+	void testGetCustomerDetails_NotFound() {
+
+		when(customerRepository.findByMobileNumber(123L)).thenReturn(Optional.empty());
+
+		assertThrows(NihilentBankException.class, () -> {
+			customerService.getCustomerDetails(123L);
+		});
+	}
+
+	// -------------------------------------------------------------------------------------------------
+	// ✔ TEST 7 — Show All Customer (Excluding Admin)
+	// -------------------------------------------------------------------------------------------------
+	@Test
+	void testShowAllCustomer() throws Exception {
+
+		Customer c1 = new Customer();
+		c1.setName("User One");
+		c1.setRole(Roles.User);
+
+		Customer c2 = new Customer();
+		c2.setName("Admin User");
+		c2.setRole(Roles.Admin);
+
+		List<Customer> list = new ArrayList<>();
+		list.add(c1);
+		list.add(c2);
+
+		when(customerRepository.findAll()).thenReturn(list);
+
+		List<CustomerDto> result = customerService.showAllCustomer();
+
+		assertEquals(1, result.size());
+		assertEquals("User One", result.get(0).getName());
+	}
+
+	// -------------------------------------------------------------------------------------------------
+	// ✔ TEST 8 — Show All Customer — Empty List (Throws Exception)
+	// -------------------------------------------------------------------------------------------------
+	@Test
+	void testShowAllCustomer_Empty() {
+
+		when(customerRepository.findAll()).thenReturn(new ArrayList<>());
+
+		assertThrows(NihilentBankException.class, () -> {
+			customerService.showAllCustomer();
+		});
+	}
+
+	// -------------------------------------------------------------------------------------------------
+	// ✔ TEST 9 — Update Email Success
+	// -------------------------------------------------------------------------------------------------
+	@Test
+	void testUpdateEmailId_Success() throws Exception {
+
+		// mock customer
+		Customer customer = new Customer();
+		customer.setMobileNumber(9876543210L);
+		customer.setEmailId("old@gmail.com");
+		customer.setAddress("Pune");
+		customer.setName("Test User");
+
+		// mock repository behavior
+		when(customerRepository.findByMobileNumber(9876543210L)).thenReturn(Optional.of(customer));
+
+		when(customerRepository.save(any(Customer.class))).thenAnswer(inv -> inv.getArgument(0));
+
+		// Inject the @Value field manually
+		ReflectionTestUtils.setField(customerService, "customerUpdate", "Customer Updated Successfully");
+
+		// call method
+		String result = customerService.updateEmailId("new@gmail.com", 9876543210L);
+
+		// assert
+		assertEquals("Customer Updated Successfully", result);
+	}
+
+	// -------------------------------------------------------------------------------------------------
+	// ✔ TEST 10 — Update Email Not Found
+	// -------------------------------------------------------------------------------------------------
+	@Test
+	void testUpdateEmailId_NotFound() {
+
+		when(customerRepository.findByMobileNumber(888L)).thenReturn(Optional.empty());
+
+		assertThrows(NihilentBankException.class, () -> {
+			customerService.updateEmailId("x@gmail.com", 888L);
+		});
+	}
 
 }

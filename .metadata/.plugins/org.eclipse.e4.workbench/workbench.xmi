@@ -2,7 +2,7 @@
 <application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_IBRJUJRqEfCT0oOz3x0EWQ" elementId="org.eclipse.e4.legacy.ide.application" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_IBRJUZRqEfCT0oOz3x0EWQ" bindingContexts="_IBRJWpRqEfCT0oOz3x0EWQ">
   <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList/>&#xD;&#xA;&lt;/workbench>"/>
   <tags>activeSchemeId:org.eclipse.ui.defaultAcceleratorConfiguration</tags>
-  <children xsi:type="basic:TrimmedWindow" xmi:id="_IBRJUZRqEfCT0oOz3x0EWQ" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_ItxC8JRqEfCT0oOz3x0EWQ" label="%trimmedwindow.label.eclipseSDK" x="152" y="152" width="1024" height="737">
+  <children xsi:type="basic:TrimmedWindow" xmi:id="_IBRJUZRqEfCT0oOz3x0EWQ" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_ItxC8JRqEfCT0oOz3x0EWQ" label="%trimmedwindow.label.eclipseSDK" x="0" y="0" width="1024" height="737">
     <persistedState key="coolBarVisible" value="true"/>
     <persistedState key="perspectiveBarVisible" value="true"/>
     <persistedState key="isRestored" value="true"/>
@@ -376,7 +376,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_IxUGMJRqEfCT0oOz3x0EWQ" elementId="org.eclipse.ui.workbench.file">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_FDNMILoOEfCf0agqXSTxcg" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.svg" tooltip="Print" command="_IDORQ5RqEfCT0oOz3x0EWQ"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_FDIzsMtyEfC8y4_7F6Bg2w" elementId="print" visible="false" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/print_edit.svg" tooltip="Print" command="_IDORQ5RqEfCT0oOz3x0EWQ"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_IxUGMZRqEfCT0oOz3x0EWQ" elementId="group.edit" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -384,8 +384,8 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_IxVUUJRqEfCT0oOz3x0EWQ" elementId="org.eclipse.ui.workbench.edit">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_FDPoYLoOEfCf0agqXSTxcg" elementId="undo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/undo_edit.svg" tooltip="Undo" enabled="false" command="_IDCrB5RqEfCT0oOz3x0EWQ"/>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_FDQ2gLoOEfCf0agqXSTxcg" elementId="redo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/redo_edit.svg" tooltip="Redo" enabled="false" command="_IDHjdpRqEfCT0oOz3x0EWQ"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_FDJaxMtyEfC8y4_7F6Bg2w" elementId="undo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/undo_edit.svg" tooltip="Undo" enabled="false" command="_IDCrB5RqEfCT0oOz3x0EWQ"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_FDKo4MtyEfC8y4_7F6Bg2w" elementId="redo" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/redo_edit.svg" tooltip="Redo" enabled="false" command="_IDHjdpRqEfCT0oOz3x0EWQ"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_IxVUUZRqEfCT0oOz3x0EWQ" elementId="additions" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -406,7 +406,7 @@
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_IxWicJRqEfCT0oOz3x0EWQ" elementId="org.eclipse.ui.workbench.navigate">
         <tags>Draggable</tags>
-        <children xsi:type="menu:HandledToolItem" xmi:id="_FDSrsLoOEfCf0agqXSTxcg" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.svg" tooltip="Pin Editor" enabled="false" type="Check" command="_IDNDMJRqEfCT0oOz3x0EWQ"/>
+        <children xsi:type="menu:HandledToolItem" xmi:id="_FDL3AMtyEfC8y4_7F6Bg2w" elementId="org.eclipse.ui.window.pinEditor" iconURI="platform:/plugin/org.eclipse.ui/icons/full/etool16/pin_editor.svg" tooltip="Pin Editor" enabled="false" type="Check" command="_IDNDMJRqEfCT0oOz3x0EWQ"/>
       </children>
       <children xsi:type="menu:ToolBar" xmi:id="_IxWicZRqEfCT0oOz3x0EWQ" elementId="group.editor" toBeRendered="false">
         <tags>toolbarSeparator</tags>
@@ -934,6 +934,7 @@
       <children xmi:id="_IDaefJRqEfCT0oOz3x0EWQ" elementId="org.eclipse.egit.ui.RepositoriesView" name="In Git Repositories View">
         <children xmi:id="_IDaefZRqEfCT0oOz3x0EWQ" elementId="org.eclipse.egit.ui.RepositoriesView.SingleRepository" name="In Git Repositories View"/>
       </children>
+      <children xmi:id="_8a1VoMXVEfCf4PunKqAnLA" elementId="org.eclipse.ui.sonarlintServerViewScope" name="In SonarQube Bindings View" description="In SonarQube Bindings View"/>
     </children>
     <children xmi:id="_IBRJXZRqEfCT0oOz3x0EWQ" elementId="org.eclipse.ui.contexts.dialog" contributorURI="platform:/plugin/org.eclipse.platform" name="In Dialogs" description="A dialog is open"/>
   </rootContext>
@@ -1380,6 +1381,48 @@
     <persistedState key="originalCompatibilityViewBundle" value="org.eclipse.ui.workbench.texteditor"/>
     <tags>View</tags>
     <tags>categoryTag:General</tags>
+  </descriptors>
+  <descriptors xmi:id="_8xBoEMXVEfCf4PunKqAnLA" elementId="org.sonarlint.eclipse.ui.views.issues.IssuesView" label="SonarQube On-The-Fly" iconURI="platform:/plugin/org.sonarlint.eclipse.ui/icons/full/eview16/onthefly.png" tooltip="" category="SonarQube" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+    <persistedState key="originalCompatibilityViewClass" value="org.sonarlint.eclipse.ui.internal.views.issues.OnTheFlyIssuesView"/>
+    <persistedState key="originalCompatibilityViewBundle" value="org.sonarlint.eclipse.ui"/>
+    <tags>View</tags>
+    <tags>categoryTag:SonarQube</tags>
+  </descriptors>
+  <descriptors xmi:id="_8xEEUMXVEfCf4PunKqAnLA" elementId="org.sonarlint.eclipse.ui.views.issues.ChangeSetIssuesView" label="SonarQube Report" iconURI="platform:/plugin/org.sonarlint.eclipse.ui/icons/full/eview16/report.png" tooltip="" category="SonarQube" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+    <persistedState key="originalCompatibilityViewClass" value="org.sonarlint.eclipse.ui.internal.views.issues.SonarLintReportView"/>
+    <persistedState key="originalCompatibilityViewBundle" value="org.sonarlint.eclipse.ui"/>
+    <tags>View</tags>
+    <tags>categoryTag:SonarQube</tags>
+  </descriptors>
+  <descriptors xmi:id="_8xFScMXVEfCf4PunKqAnLA" elementId="org.sonarlint.eclipse.ui.views.RuleDescriptionWebView" label="SonarQube Rule Description" iconURI="platform:/plugin/org.sonarlint.eclipse.ui/icons/full/eview16/rule.png" tooltip="" category="SonarQube" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+    <persistedState key="originalCompatibilityViewClass" value="org.sonarlint.eclipse.ui.internal.views.RuleDescriptionWebView"/>
+    <persistedState key="originalCompatibilityViewBundle" value="org.sonarlint.eclipse.ui"/>
+    <tags>View</tags>
+    <tags>categoryTag:SonarQube</tags>
+  </descriptors>
+  <descriptors xmi:id="_8xHHoMXVEfCf4PunKqAnLA" elementId="org.sonarlint.eclipse.ui.views.IssueLocationsView" label="SonarQube Issue Locations" iconURI="platform:/plugin/org.sonarlint.eclipse.ui/icons/full/eview16/locations.png" tooltip="" category="SonarQube" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+    <persistedState key="originalCompatibilityViewClass" value="org.sonarlint.eclipse.ui.internal.views.locations.IssueLocationsView"/>
+    <persistedState key="originalCompatibilityViewBundle" value="org.sonarlint.eclipse.ui"/>
+    <tags>View</tags>
+    <tags>categoryTag:SonarQube</tags>
+  </descriptors>
+  <descriptors xmi:id="_8xIVwMXVEfCf4PunKqAnLA" elementId="org.sonarlint.eclipse.ui.ServersView" label="SonarQube Bindings" iconURI="platform:/plugin/org.sonarlint.eclipse.ui/icons/full/eview16/bindings.png" tooltip="" category="SonarQube" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+    <persistedState key="originalCompatibilityViewClass" value="org.sonarlint.eclipse.ui.internal.binding.BindingsView"/>
+    <persistedState key="originalCompatibilityViewBundle" value="org.sonarlint.eclipse.ui"/>
+    <tags>View</tags>
+    <tags>categoryTag:SonarQube</tags>
+  </descriptors>
+  <descriptors xmi:id="_8xKK8MXVEfCf4PunKqAnLA" elementId="org.sonarlint.eclipse.ui.views.HotspotsView" label="SonarQube Security Hotspots" iconURI="platform:/plugin/org.sonarlint.eclipse.ui/icons/full/eview16/hotspots.png" tooltip="" category="SonarQube" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+    <persistedState key="originalCompatibilityViewClass" value="org.sonarlint.eclipse.ui.internal.hotspots.HotspotsView"/>
+    <persistedState key="originalCompatibilityViewBundle" value="org.sonarlint.eclipse.ui"/>
+    <tags>View</tags>
+    <tags>categoryTag:SonarQube</tags>
+  </descriptors>
+  <descriptors xmi:id="_8xLZEMXVEfCf4PunKqAnLA" elementId="org.sonarlint.eclipse.ui.views.issues.TaintVulnerabilitiesView" label="SonarQube Taint Vulnerabilities" iconURI="platform:/plugin/org.sonarlint.eclipse.ui/icons/full/eview16/vulnerabilities.png" tooltip="" category="SonarQube" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+    <persistedState key="originalCompatibilityViewClass" value="org.sonarlint.eclipse.ui.internal.views.issues.TaintVulnerabilitiesView"/>
+    <persistedState key="originalCompatibilityViewBundle" value="org.sonarlint.eclipse.ui"/>
+    <tags>View</tags>
+    <tags>categoryTag:SonarQube</tags>
   </descriptors>
   <trimContributions xmi:id="_2r10UF9tEeO-yojH_y4TJA" elementId="org.eclipse.ui.ide.application.trimcontribution.QuickAccess" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" toBeRendered="false" parentId="org.eclipse.ui.main.toolbar" positionInParent="last">
     <children xsi:type="menu:ToolControl" xmi:id="_76uUAF9tEeO-yojH_y4TJA" elementId="Spacer Glue" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
@@ -2400,6 +2443,19 @@
   <commands xmi:id="_IrRvoJRqEfCT0oOz3x0EWQ" elementId="AUTOGEN:::org.eclipse.mylyn.tasks.ui.actions.view/org.eclipse.mylyn.tasks.ui.open.repositories.view" commandName="Show Task Repositories View" description="Show Task Repositories View" category="_ICyzcpRqEfCT0oOz3x0EWQ"/>
   <commands xmi:id="_IrRvoZRqEfCT0oOz3x0EWQ" elementId="AUTOGEN:::org.eclipse.mylyn.tasks.ui.actions.view/org.eclipse.mylyn.doc.legend.show.action" commandName="Show UI Legend" description="Show Tasks UI Legend" category="_ICyzcpRqEfCT0oOz3x0EWQ"/>
   <commands xmi:id="_IrSWsJRqEfCT0oOz3x0EWQ" elementId="AUTOGEN:::org.eclipse.mylyn.tasks.ui.actions.view/org.eclipse.mylyn.context.ui.actions.tasklist.focus" commandName="Focus on Workweek" description="Focus on Workweek" category="_ICyzcpRqEfCT0oOz3x0EWQ"/>
+  <commands xmi:id="_8avPAMXVEfCf4PunKqAnLA" elementId="org.sonarlint.eclipse.ui.internal.command.HelpOnIconsCommand" commandName="What do the icons mean?" description="SonarLint issue icons" category="_8atZ0cXVEfCf4PunKqAnLA"/>
+  <commands xmi:id="_8avPAcXVEfCf4PunKqAnLA" elementId="org.sonarlint.eclipse.ui.internal.command.AnalyzeCommand" commandName="Analyze" description="Analyze with SonarLint" category="_8atZ0cXVEfCf4PunKqAnLA"/>
+  <commands xmi:id="_8avPAsXVEfCf4PunKqAnLA" elementId="org.sonarlint.eclipse.ui.internal.command.ShareBindingCommand" commandName="Share Binding..." description="Share the binding information to SonarQube (Server, Cloud)" category="_8atZ0cXVEfCf4PunKqAnLA"/>
+  <commands xmi:id="_8avPA8XVEfCf4PunKqAnLA" elementId="org.sonarlint.eclipse.ui.internal.command.MarkAsResolvedCommand" commandName="Mark Issue as..." description="Change the issue status" category="_8atZ0cXVEfCf4PunKqAnLA"/>
+  <commands xmi:id="_8avPBMXVEfCf4PunKqAnLA" elementId="org.sonarlint.eclipse.ui.internal.command.ChangeProjectsBindingCommand" commandName="Change Binding..." description="Bind to a project analyzed on SonarQube (Server, Cloud)" category="_8atZ0cXVEfCf4PunKqAnLA"/>
+  <commands xmi:id="_8avPBcXVEfCf4PunKqAnLA" elementId="org.sonarlint.eclipse.ui.internal.command.AnalyzeChangeSetCommand" commandName="Analyze changed files" description="Analyze changed files with SonarLint" category="_8atZ0cXVEfCf4PunKqAnLA"/>
+  <commands xmi:id="_8avPBsXVEfCf4PunKqAnLA" elementId="org.sonarlint.eclipse.ui.internal.command.ReOpenResolvedCommand" commandName="Re-Open resolved Issue..." description="Re-Open already resolved issue" category="_8atZ0cXVEfCf4PunKqAnLA"/>
+  <commands xmi:id="_8av2EMXVEfCf4PunKqAnLA" elementId="org.sonarlint.eclipse.ui.internal.command.BindProjectsCommand" commandName="Bind to SonarQube (Server, Cloud)..." description="Bind to a project analyzed on SonarQube (Server, Cloud)" category="_8atZ0cXVEfCf4PunKqAnLA"/>
+  <commands xmi:id="_8av2EcXVEfCf4PunKqAnLA" elementId="org.sonarlint.eclipse.ui.internal.command.ShowRuleDescriptionCommand" commandName="Rule description" description="Show rule details" category="_8atZ0cXVEfCf4PunKqAnLA"/>
+  <commands xmi:id="_8av2EsXVEfCf4PunKqAnLA" elementId="org.sonarlint.eclipse.ui.internal.command.ExcludeCommand" commandName="Exclude" description="Exclude from analysis" category="_8atZ0cXVEfCf4PunKqAnLA"/>
+  <commands xmi:id="_8av2E8XVEfCf4PunKqAnLA" elementId="org.sonarlint.eclipse.ui.internal.command.OpenInBrowserCommand" commandName="Open in browser" description="Open issue in the browser" category="_8atZ0cXVEfCf4PunKqAnLA"/>
+  <commands xmi:id="_8av2FMXVEfCf4PunKqAnLA" elementId="org.sonarlint.eclipse.ui.internal.command.DeactivateRuleCommand" commandName="Deactivate rule" description="Deactivate the rule of this issue" category="_8atZ0cXVEfCf4PunKqAnLA"/>
+  <commands xmi:id="_8av2FcXVEfCf4PunKqAnLA" elementId="org.sonarlint.eclipse.ui.internal.command.UnbindProjectsCommand" commandName="Unbind project" description="Unbind selected projects" category="_8atZ0cXVEfCf4PunKqAnLA"/>
   <addons xmi:id="_IBRJXpRqEfCT0oOz3x0EWQ" elementId="org.eclipse.e4.core.commands.service" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.core.commands/org.eclipse.e4.core.commands.CommandServiceAddon"/>
   <addons xmi:id="_IBRJX5RqEfCT0oOz3x0EWQ" elementId="org.eclipse.e4.ui.contexts.service" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.ui.services/org.eclipse.e4.ui.services.ContextServiceAddon"/>
   <addons xmi:id="_IBRJYJRqEfCT0oOz3x0EWQ" elementId="org.eclipse.e4.ui.bindings.service" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.ui.bindings/org.eclipse.e4.ui.bindings.BindingServiceAddon"/>
@@ -2411,7 +2467,7 @@
   <addons xmi:id="_IBRJZpRqEfCT0oOz3x0EWQ" elementId="MinMax Addon" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.minmax.MinMaxAddon"/>
   <addons xmi:id="_IBRJZ5RqEfCT0oOz3x0EWQ" elementId="org.eclipse.ui.workbench.addon.0" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.HandlerProcessingAddon"/>
   <addons xmi:id="_IB2YIJRqEfCT0oOz3x0EWQ" elementId="SplitterAddon" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.splitteraddon.SplitterAddon"/>
-  <addons xmi:id="_IYS0IKimEeS11vbz3f9ezw" elementId="org.eclipse.ui.ide.addon.0" contributorURI="platform:/plugin/org.eclipse.ui.ide" contributionURI="bundleclass://org.eclipse.ui.ide/org.eclipse.ui.internal.ide.addons.SaveAllDirtyPartsAddon"/>
+  <addons xmi:id="_E2kXUctyEfC8y4_7F6Bg2w" elementId="org.eclipse.ui.ide.addon.0" contributionURI="bundleclass://org.eclipse.ui.ide/org.eclipse.ui.internal.ide.addons.SaveAllDirtyPartsAddon"/>
   <addons xmi:id="_dz0JgGOlEeSMMaPQU2nlzw" elementId="org.eclipse.ui.ide.application.addon.0" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" contributionURI="bundleclass://org.eclipse.ui.ide.application/org.eclipse.ui.internal.ide.application.addons.ModelCleanupAddon"/>
   <categories xmi:id="_ICxlMJRqEfCT0oOz3x0EWQ" elementId="org.eclipse.team.ui.category.team" name="Version control (Team)" description="Actions that apply when working with a version control system"/>
   <categories xmi:id="_ICxlMZRqEfCT0oOz3x0EWQ" elementId="org.eclipse.ui.category.views" name="Views" description="Commands for opening views"/>
@@ -2453,4 +2509,5 @@
   <categories xmi:id="_ICyzcJRqEfCT0oOz3x0EWQ" elementId="org.eclipse.pde.runtime.spy.commands.category" name="Spy"/>
   <categories xmi:id="_ICyzcZRqEfCT0oOz3x0EWQ" elementId="org.eclipse.oomph.commands" name="Oomph"/>
   <categories xmi:id="_ICyzcpRqEfCT0oOz3x0EWQ" elementId="org.eclipse.core.commands.categories.autogenerated" name="Uncategorized" description="Commands that were either auto-generated or have no category"/>
+  <categories xmi:id="_8atZ0cXVEfCf4PunKqAnLA" elementId="org.sonarlint.eclipse.ui.command.category" name="SonarLint" description="SonarLint commands"/>
 </application:Application>
