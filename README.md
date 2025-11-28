@@ -36,7 +36,7 @@ transaction history, loan processing, bulk transaction uploads, and account stat
 ## Installation
  1. Clone the repository
    ```bash
-   git clone https://github.com/username/digital-banking.git
+   git clone https://github.com/Aniket30-ai/BankingApplication.git
 
  2. Open MySQL and create a database
     CREATE DATABASE digital_banking;
