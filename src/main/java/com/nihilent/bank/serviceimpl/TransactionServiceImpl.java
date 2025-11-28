@@ -459,7 +459,6 @@ public class TransactionServiceImpl implements TransactionService {
 		String transactionId = "TNX" + integer1;
 
 		
-		System.out.println(transactionId);
 		
 		// for sender
 
