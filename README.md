@@ -11,14 +11,14 @@ transaction history, loan processing, bulk transaction uploads, and account stat
 
 ## Features
 
-• Customer Account Management               
-• Fund Transfers 
-• Loan Module                   
-• Transaction History & Account Statements 
-• Bill Payments 
-• Admin Account management 
-• Admin Transaction Monitoring  
-• Admin Loan Management 
+• Customer Account Management
+• Fund Transfers
+• Loan Module            
+• Transaction History & Account Statements
+• Bill Payments
+• Admin Account management
+• Admin Transaction Monitoring
+• Admin Loan Management
 
 
 ## Database Schema
