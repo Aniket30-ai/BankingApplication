@@ -3,6 +3,7 @@
 Banking Application is designed to streamline core banking operations for both customers and administrators. It 
 provides secure and real-time access to essential banking services, including user account management, fund transfers, 
 transaction history, loan processing, bulk transaction uploads, and account statement generation. 
+ //update read me file
 
 ## Table of Contents
 - Features
