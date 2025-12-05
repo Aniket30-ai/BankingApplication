@@ -10,7 +10,7 @@ import com.nihilent.bank.exception.NihilentBankException;
 
 public interface BankAccountService {
 
-	// update to trigger CI pipeline
+	// update to trigger CI pipeline in azure
 	public Long createAccount(BankAccountDto accountDto) throws NihilentBankException;
 
 	public BankAccountDto getAccountDetails(Long accountNumber) throws NihilentBankException;
