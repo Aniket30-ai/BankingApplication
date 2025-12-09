@@ -7,6 +7,7 @@ import com.nihilent.bank.exception.NihilentBankException;
 
 public interface BeneficiaryAccountService {
 
+	//run CI pipeline
 	public BeneficiaryAccount addBeneficiary(BeneficiaryAccount beneficiary) throws NihilentBankException;
 
 	public List<BeneficiaryAccount> getAllBeneficiaries() throws NihilentBankException;
