@@ -6,7 +6,7 @@ stages:
     jobs:
     - job: Build
       pool:
-       vmImage: 'ubantu-latest'
+       vmImage: 'ubuntu-latest'
       steps:
       - task: Maven@4
         inputs:
