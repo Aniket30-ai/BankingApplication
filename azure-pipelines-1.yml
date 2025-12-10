@@ -19,5 +19,3 @@ stages:
          effectivePomSkip: false
          sonarQubeRunAnalysis: false
     
-  - stage: Test
-  - stage: Deploy
