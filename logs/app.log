@@ -1869,3 +1869,387 @@ org.apache.kafka.common.errors.TimeoutException: Topic transaction not present i
 2025-12-22 15:43:14 WARN  com.nihilent.bank.serviceimpl.BeneficiaryAccountServiceImpl - Beneficiary Not Found
 2025-12-22 15:43:14 INFO  com.nihilent.bank.serviceimpl.BeneficiaryAccountServiceImpl - Beneficiary Deleted
 2025-12-22 15:43:14 INFO  com.nihilent.bank.serviceimpl.BeneficiaryAccountServiceImpl - Beneficiary Added Successfully
+2025-12-22 15:53:34 INFO  org.springframework.boot.devtools.restart.RestartApplicationListener - Restart disabled due to context in which it is running
+2025-12-22 15:53:35 INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-12-22 15:53:35 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BankAccountControllerTest - Starting BankAccountControllerTest using Java 17.0.10 with PID 35716 (started by aniket.dhakate in C:\NihilentBankTestCases\BankingApplication)
+2025-12-22 15:53:35 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BankAccountControllerTest - The following 1 profile is active: "dev"
+2025-12-22 15:53:47 WARN  org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: e63fe8ae-f231-465d-a909-f31645323956
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-12-22 15:53:47 INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-12-22 15:53:48 INFO  org.springframework.boot.test.mock.web.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-22 15:53:48 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2025-12-22 15:53:48 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 3 ms
+2025-12-22 15:53:48 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BankAccountControllerTest - Started BankAccountControllerTest in 14.721 seconds (process running for 21.537)
+2025-12-22 15:54:27 INFO  org.springframework.boot.devtools.restart.RestartApplicationListener - Restart disabled due to context in which it is running
+2025-12-22 15:54:28 INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-12-22 15:54:28 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BeneficiaryAccountTest - Starting BeneficiaryAccountTest using Java 17.0.10 with PID 40140 (started by aniket.dhakate in C:\NihilentBankTestCases\BankingApplication)
+2025-12-22 15:54:28 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BeneficiaryAccountTest - The following 1 profile is active: "dev"
+2025-12-22 15:54:35 WARN  org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 11f7e3af-9c7f-4108-8380-bcfcb2796079
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-12-22 15:54:35 INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-12-22 15:54:36 INFO  org.springframework.boot.test.mock.web.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-22 15:54:36 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2025-12-22 15:54:36 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 3 ms
+2025-12-22 15:54:36 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BeneficiaryAccountTest - Started BeneficiaryAccountTest in 9.035 seconds (process running for 14.104)
+2025-12-22 15:55:38 INFO  org.springframework.boot.devtools.restart.RestartApplicationListener - Restart disabled due to context in which it is running
+2025-12-22 15:55:39 INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-12-22 15:55:39 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BillPaymentsControllerTest - Starting BillPaymentsControllerTest using Java 17.0.10 with PID 1628 (started by aniket.dhakate in C:\NihilentBankTestCases\BankingApplication)
+2025-12-22 15:55:39 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BillPaymentsControllerTest - The following 1 profile is active: "dev"
+2025-12-22 15:55:46 WARN  org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: b6023f05-b33c-479d-a2a7-5e53b18f208c
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-12-22 15:55:46 INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-12-22 15:55:46 INFO  org.springframework.boot.test.mock.web.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-22 15:55:46 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2025-12-22 15:55:46 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 3 ms
+2025-12-22 15:55:46 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BillPaymentsControllerTest - Started BillPaymentsControllerTest in 8.299 seconds (process running for 14.87)
+2025-12-22 15:57:31 INFO  org.springframework.boot.devtools.restart.RestartApplicationListener - Restart disabled due to context in which it is running
+2025-12-22 15:57:32 INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-12-22 15:57:32 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BillPaymentsControllerTest - Starting BillPaymentsControllerTest using Java 17.0.10 with PID 23428 (started by aniket.dhakate in C:\NihilentBankTestCases\BankingApplication)
+2025-12-22 15:57:32 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BillPaymentsControllerTest - The following 1 profile is active: "dev"
+2025-12-22 15:57:38 WARN  org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 9b03c9fd-633e-4f47-a17e-75d444c7d968
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-12-22 15:57:38 INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-12-22 15:57:39 INFO  org.springframework.boot.test.mock.web.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-22 15:57:39 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2025-12-22 15:57:39 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 5 ms
+2025-12-22 15:57:39 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BillPaymentsControllerTest - Started BillPaymentsControllerTest in 7.502 seconds (process running for 11.925)
+2025-12-22 15:58:54 INFO  org.springframework.boot.devtools.restart.RestartApplicationListener - Restart disabled due to context in which it is running
+2025-12-22 15:58:54 INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-12-22 15:58:55 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BeneficiaryAccountTest - Starting BeneficiaryAccountTest using Java 17.0.10 with PID 40004 (started by aniket.dhakate in C:\NihilentBankTestCases\BankingApplication)
+2025-12-22 15:58:55 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BeneficiaryAccountTest - The following 1 profile is active: "dev"
+2025-12-22 15:59:01 WARN  org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: fdf174f9-0172-47fe-aef4-7f90c9ba122a
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-12-22 15:59:01 INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-12-22 15:59:01 INFO  org.springframework.boot.test.mock.web.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-22 15:59:01 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2025-12-22 15:59:01 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 4 ms
+2025-12-22 15:59:01 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BeneficiaryAccountTest - Started BeneficiaryAccountTest in 7.507 seconds (process running for 11.832)
+2025-12-22 16:00:59 INFO  org.springframework.boot.devtools.restart.RestartApplicationListener - Restart disabled due to context in which it is running
+2025-12-22 16:01:00 INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-12-22 16:01:00 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BeneficiaryAccountTest - Starting BeneficiaryAccountTest using Java 17.0.10 with PID 35292 (started by aniket.dhakate in C:\NihilentBankTestCases\BankingApplication)
+2025-12-22 16:01:00 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BeneficiaryAccountTest - The following 1 profile is active: "dev"
+2025-12-22 16:01:07 WARN  org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 1cc29f86-b229-438c-abbd-820c9f77dc02
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-12-22 16:01:07 INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-12-22 16:01:08 INFO  org.springframework.boot.test.mock.web.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-22 16:01:08 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2025-12-22 16:01:08 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 4 ms
+2025-12-22 16:01:08 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BeneficiaryAccountTest - Started BeneficiaryAccountTest in 8.362 seconds (process running for 12.972)
+2025-12-22 16:40:41 INFO  org.springframework.boot.devtools.restart.RestartApplicationListener - Restart disabled due to context in which it is running
+2025-12-22 16:40:41 INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-12-22 16:40:41 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.CustomerControllerTest - Starting CustomerControllerTest using Java 17.0.10 with PID 12508 (started by aniket.dhakate in C:\NihilentBankTestCases\BankingApplication)
+2025-12-22 16:40:41 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.CustomerControllerTest - The following 1 profile is active: "dev"
+2025-12-22 16:40:49 WARN  org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: b741adcf-3528-4ab9-b632-deefa6441e67
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-12-22 16:40:49 INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-12-22 16:40:49 INFO  org.springframework.boot.test.mock.web.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-22 16:40:49 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2025-12-22 16:40:49 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 6 ms
+2025-12-22 16:40:49 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.CustomerControllerTest - Started CustomerControllerTest in 8.521 seconds (process running for 13.198)
+2025-12-22 16:46:08 INFO  org.springframework.boot.devtools.restart.RestartApplicationListener - Restart disabled due to context in which it is running
+2025-12-22 16:46:09 INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-12-22 16:46:09 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.CustomerControllerTest - Starting CustomerControllerTest using Java 17.0.10 with PID 21780 (started by aniket.dhakate in C:\NihilentBankTestCases\BankingApplication)
+2025-12-22 16:46:09 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.CustomerControllerTest - The following 1 profile is active: "dev"
+2025-12-22 16:46:15 WARN  org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: ced59df8-29ff-4512-ac74-8c77e9629346
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-12-22 16:46:15 INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-12-22 16:46:15 INFO  org.springframework.boot.test.mock.web.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-22 16:46:15 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2025-12-22 16:46:15 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 3 ms
+2025-12-22 16:46:16 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.CustomerControllerTest - Started CustomerControllerTest in 7.502 seconds (process running for 14.128)
+2025-12-22 16:46:17 INFO  org.springframework.boot.devtools.restart.RestartApplicationListener - Restart disabled due to context in which it is running
+2025-12-22 16:46:17 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BankAccountControllerTest - Starting BankAccountControllerTest using Java 17.0.10 with PID 21780 (started by aniket.dhakate in C:\NihilentBankTestCases\BankingApplication)
+2025-12-22 16:46:17 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BankAccountControllerTest - The following 1 profile is active: "dev"
+2025-12-22 16:46:18 WARN  org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: e770842e-10fe-47f7-9a05-102debd0e325
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-12-22 16:46:18 INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-12-22 16:46:18 INFO  org.springframework.boot.test.mock.web.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-22 16:46:18 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2025-12-22 16:46:18 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 1 ms
+2025-12-22 16:46:18 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BankAccountControllerTest - Started BankAccountControllerTest in 1.254 seconds (process running for 16.564)
+2025-12-22 16:46:19 INFO  org.springframework.boot.devtools.restart.RestartApplicationListener - Restart disabled due to context in which it is running
+2025-12-22 16:46:19 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BeneficiaryAccountTest - Starting BeneficiaryAccountTest using Java 17.0.10 with PID 21780 (started by aniket.dhakate in C:\NihilentBankTestCases\BankingApplication)
+2025-12-22 16:46:19 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BeneficiaryAccountTest - The following 1 profile is active: "dev"
+2025-12-22 16:46:19 WARN  org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 172328af-6d77-470c-aff1-11dcb73969a3
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-12-22 16:46:19 INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-12-22 16:46:19 INFO  org.springframework.boot.test.mock.web.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-22 16:46:19 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2025-12-22 16:46:19 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 0 ms
+2025-12-22 16:46:20 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BeneficiaryAccountTest - Started BeneficiaryAccountTest in 0.81 seconds (process running for 18.067)
+2025-12-22 16:46:20 INFO  org.springframework.boot.devtools.restart.RestartApplicationListener - Restart disabled due to context in which it is running
+2025-12-22 16:46:20 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BillPaymentsControllerTest - Starting BillPaymentsControllerTest using Java 17.0.10 with PID 21780 (started by aniket.dhakate in C:\NihilentBankTestCases\BankingApplication)
+2025-12-22 16:46:20 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BillPaymentsControllerTest - The following 1 profile is active: "dev"
+2025-12-22 16:46:21 WARN  org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 7f94f69b-22aa-4327-9c6f-44806739e003
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-12-22 16:46:21 INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-12-22 16:46:21 INFO  org.springframework.boot.test.mock.web.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-22 16:46:21 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2025-12-22 16:46:21 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 1 ms
+2025-12-22 16:46:21 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BillPaymentsControllerTest - Started BillPaymentsControllerTest in 1.148 seconds (process running for 19.381)
+2025-12-22 16:48:49 INFO  org.springframework.boot.devtools.restart.RestartApplicationListener - Restart disabled due to context in which it is running
+2025-12-22 16:48:50 INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-12-22 16:48:50 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.LoanControllerTest - Starting LoanControllerTest using Java 17.0.10 with PID 19092 (started by aniket.dhakate in C:\NihilentBankTestCases\BankingApplication)
+2025-12-22 16:48:50 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.LoanControllerTest - The following 1 profile is active: "dev"
+2025-12-22 16:48:57 WARN  org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 6de2305a-578c-41bb-a16c-ec83cbe4e572
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-12-22 16:48:57 INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-12-22 16:48:57 INFO  org.springframework.boot.test.mock.web.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-22 16:48:57 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2025-12-22 16:48:57 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 3 ms
+2025-12-22 16:48:58 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.LoanControllerTest - Started LoanControllerTest in 8.764 seconds (process running for 13.849)
+2025-12-22 16:49:11 INFO  org.springframework.boot.devtools.restart.RestartApplicationListener - Restart disabled due to context in which it is running
+2025-12-22 16:49:12 INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-12-22 16:49:12 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.TransactionControllerTest - Starting TransactionControllerTest using Java 17.0.10 with PID 7584 (started by aniket.dhakate in C:\NihilentBankTestCases\BankingApplication)
+2025-12-22 16:49:12 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.TransactionControllerTest - The following 1 profile is active: "dev"
+2025-12-22 16:49:18 WARN  org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 33eaaa0c-2505-471c-88b1-4a0cba415716
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-12-22 16:49:18 INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-12-22 16:49:18 INFO  org.springframework.boot.test.mock.web.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-22 16:49:18 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2025-12-22 16:49:18 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 7 ms
+2025-12-22 16:49:18 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.TransactionControllerTest - Started TransactionControllerTest in 7.094 seconds (process running for 11.185)
+2025-12-22 16:49:55 INFO  com.nihilent.bank.serviceimpl.TransactionServiceImpl - DEBIT SUCCESS
+2025-12-22 16:49:55 INFO  com.nihilent.bank.serviceimpl.TransactionServiceImpl - CREDIT SUCCESS
+2025-12-22 16:49:55 ERROR com.nihilent.bank.serviceimpl.TransactionServiceImpl - Insufficient Balance
+2025-12-22 16:49:57 INFO  org.springframework.boot.devtools.restart.RestartApplicationListener - Restart disabled due to context in which it is running
+2025-12-22 16:49:58 INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-12-22 16:49:58 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BankAccountControllerTest - Starting BankAccountControllerTest using Java 17.0.10 with PID 24148 (started by aniket.dhakate in C:\NihilentBankTestCases\BankingApplication)
+2025-12-22 16:49:58 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BankAccountControllerTest - The following 1 profile is active: "dev"
+2025-12-22 16:50:04 WARN  org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: dd9782c8-0fea-43b7-b9e4-fe24a887b05c
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-12-22 16:50:04 INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-12-22 16:50:05 INFO  org.springframework.boot.test.mock.web.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-22 16:50:05 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2025-12-22 16:50:05 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 6 ms
+2025-12-22 16:50:05 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BankAccountControllerTest - Started BankAccountControllerTest in 8.017 seconds (process running for 23.766)
+2025-12-22 16:50:08 INFO  org.springframework.boot.devtools.restart.RestartApplicationListener - Restart disabled due to context in which it is running
+2025-12-22 16:50:08 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BeneficiaryAccountTest - Starting BeneficiaryAccountTest using Java 17.0.10 with PID 24148 (started by aniket.dhakate in C:\NihilentBankTestCases\BankingApplication)
+2025-12-22 16:50:08 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BeneficiaryAccountTest - The following 1 profile is active: "dev"
+2025-12-22 16:50:09 WARN  org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 1ee69780-421d-4f38-8f64-3408e385b327
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-12-22 16:50:09 INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-12-22 16:50:09 INFO  org.springframework.boot.test.mock.web.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-22 16:50:09 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2025-12-22 16:50:09 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 2 ms
+2025-12-22 16:50:09 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BeneficiaryAccountTest - Started BeneficiaryAccountTest in 1.05 seconds (process running for 27.731)
+2025-12-22 16:50:09 INFO  org.springframework.boot.devtools.restart.RestartApplicationListener - Restart disabled due to context in which it is running
+2025-12-22 16:50:09 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BillPaymentsControllerTest - Starting BillPaymentsControllerTest using Java 17.0.10 with PID 24148 (started by aniket.dhakate in C:\NihilentBankTestCases\BankingApplication)
+2025-12-22 16:50:09 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BillPaymentsControllerTest - The following 1 profile is active: "dev"
+2025-12-22 16:50:10 WARN  org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: e0661afe-d5ac-44ad-8b89-a196ccce1e8d
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-12-22 16:50:10 INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-12-22 16:50:10 INFO  org.springframework.boot.test.mock.web.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-22 16:50:10 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2025-12-22 16:50:10 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 1 ms
+2025-12-22 16:50:10 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BillPaymentsControllerTest - Started BillPaymentsControllerTest in 0.853 seconds (process running for 28.752)
+2025-12-22 16:50:10 INFO  org.springframework.boot.devtools.restart.RestartApplicationListener - Restart disabled due to context in which it is running
+2025-12-22 16:50:10 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.LoanControllerTest - Starting LoanControllerTest using Java 17.0.10 with PID 24148 (started by aniket.dhakate in C:\NihilentBankTestCases\BankingApplication)
+2025-12-22 16:50:10 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.LoanControllerTest - The following 1 profile is active: "dev"
+2025-12-22 16:50:11 WARN  org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 36dddb7a-dce6-4a8b-9a6a-43a7481d9daa
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-12-22 16:50:11 INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-12-22 16:50:11 INFO  org.springframework.boot.test.mock.web.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-22 16:50:11 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2025-12-22 16:50:11 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 2 ms
+2025-12-22 16:50:11 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.LoanControllerTest - Started LoanControllerTest in 0.842 seconds (process running for 29.847)
+2025-12-22 16:50:11 WARN  com.nihilent.bank.serviceimpl.BeneficiaryAccountServiceImpl - Beneficiary Already Exists
+2025-12-22 16:50:11 WARN  com.nihilent.bank.serviceimpl.BeneficiaryAccountServiceImpl - Beneficiary Not Found
+2025-12-22 16:50:11 WARN  com.nihilent.bank.serviceimpl.BeneficiaryAccountServiceImpl - Beneficiary Not Found
+2025-12-22 16:50:11 INFO  com.nihilent.bank.serviceimpl.BeneficiaryAccountServiceImpl - Beneficiary Deleted
+2025-12-22 16:50:11 INFO  com.nihilent.bank.serviceimpl.BeneficiaryAccountServiceImpl - Beneficiary Added Successfully
+2025-12-22 16:50:12 INFO  com.nihilent.bank.serviceimpl.CreditCardServiceImpl - Request Sent
+2025-12-22 16:50:12 INFO  org.springframework.boot.devtools.restart.RestartApplicationListener - Restart disabled due to context in which it is running
+2025-12-22 16:50:12 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.CustomerControllerTest - Starting CustomerControllerTest using Java 17.0.10 with PID 24148 (started by aniket.dhakate in C:\NihilentBankTestCases\BankingApplication)
+2025-12-22 16:50:12 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.CustomerControllerTest - The following 1 profile is active: "dev"
+2025-12-22 16:50:12 WARN  org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 5eaddcaa-ba30-414d-b168-4596a28d40d2
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-12-22 16:50:12 INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-12-22 16:50:12 INFO  org.springframework.boot.test.mock.web.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-22 16:50:12 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2025-12-22 16:50:12 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 2 ms
+2025-12-22 16:50:12 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.CustomerControllerTest - Started CustomerControllerTest in 0.914 seconds (process running for 31.399)
+2025-12-22 16:50:13 INFO  com.nihilent.bank.serviceimpl.CustomerServiceImpl - Customer Registered Successfully
+2025-12-22 16:50:13 ERROR com.nihilent.bank.serviceimpl.CustomerServiceImpl - null
+2025-12-22 16:50:13 INFO  org.springframework.boot.devtools.restart.RestartApplicationListener - Restart disabled due to context in which it is running
+2025-12-22 16:50:13 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.TransactionControllerTest - Starting TransactionControllerTest using Java 17.0.10 with PID 24148 (started by aniket.dhakate in C:\NihilentBankTestCases\BankingApplication)
+2025-12-22 16:50:13 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.TransactionControllerTest - The following 1 profile is active: "dev"
+2025-12-22 16:50:14 WARN  org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 0d113f9d-0273-4053-a664-1b897850e13e
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-12-22 16:50:14 INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-12-22 16:50:14 INFO  org.springframework.boot.test.mock.web.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-22 16:50:14 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2025-12-22 16:50:14 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 1 ms
+2025-12-22 16:50:14 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.TransactionControllerTest - Started TransactionControllerTest in 0.948 seconds (process running for 33.027)
+2025-12-22 16:51:58 INFO  com.nihilent.bank.serviceimpl.TransactionServiceImpl - DEBIT SUCCESS
+2025-12-22 16:51:58 INFO  com.nihilent.bank.serviceimpl.TransactionServiceImpl - CREDIT SUCCESS
+2025-12-22 16:51:58 ERROR com.nihilent.bank.serviceimpl.TransactionServiceImpl - Insufficient Balance
+2025-12-22 16:51:59 INFO  org.springframework.boot.devtools.restart.RestartApplicationListener - Restart disabled due to context in which it is running
+2025-12-22 16:52:01 INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-12-22 16:52:01 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BankAccountControllerTest - Starting BankAccountControllerTest using Java 17.0.10 with PID 19700 (started by aniket.dhakate in C:\NihilentBankTestCases\BankingApplication)
+2025-12-22 16:52:01 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BankAccountControllerTest - The following 1 profile is active: "dev"
+2025-12-22 16:52:06 WARN  org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: bf1147eb-9a0a-4622-a654-a0d10c09c4ab
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-12-22 16:52:06 INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-12-22 16:52:07 INFO  org.springframework.boot.test.mock.web.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-22 16:52:07 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2025-12-22 16:52:07 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 3 ms
+2025-12-22 16:52:07 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BankAccountControllerTest - Started BankAccountControllerTest in 7.57 seconds (process running for 31.4)
+2025-12-22 16:52:10 INFO  org.springframework.boot.devtools.restart.RestartApplicationListener - Restart disabled due to context in which it is running
+2025-12-22 16:52:10 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BeneficiaryAccountTest - Starting BeneficiaryAccountTest using Java 17.0.10 with PID 19700 (started by aniket.dhakate in C:\NihilentBankTestCases\BankingApplication)
+2025-12-22 16:52:10 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BeneficiaryAccountTest - The following 1 profile is active: "dev"
+2025-12-22 16:52:11 WARN  org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 23fd6624-86ce-4fa2-a568-c0ef10a06782
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-12-22 16:52:11 INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-12-22 16:52:11 INFO  org.springframework.boot.test.mock.web.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-22 16:52:11 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2025-12-22 16:52:11 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 3 ms
+2025-12-22 16:52:11 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BeneficiaryAccountTest - Started BeneficiaryAccountTest in 1.177 seconds (process running for 35.612)
+2025-12-22 16:52:11 INFO  org.springframework.boot.devtools.restart.RestartApplicationListener - Restart disabled due to context in which it is running
+2025-12-22 16:52:11 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BillPaymentsControllerTest - Starting BillPaymentsControllerTest using Java 17.0.10 with PID 19700 (started by aniket.dhakate in C:\NihilentBankTestCases\BankingApplication)
+2025-12-22 16:52:11 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BillPaymentsControllerTest - The following 1 profile is active: "dev"
+2025-12-22 16:52:12 WARN  org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 8eb0179a-bf89-4c53-a7b0-ea062ab95397
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-12-22 16:52:12 INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-12-22 16:52:12 INFO  org.springframework.boot.test.mock.web.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-22 16:52:12 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2025-12-22 16:52:12 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 1 ms
+2025-12-22 16:52:12 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.BillPaymentsControllerTest - Started BillPaymentsControllerTest in 1.007 seconds (process running for 36.786)
+2025-12-22 16:52:13 INFO  org.springframework.boot.devtools.restart.RestartApplicationListener - Restart disabled due to context in which it is running
+2025-12-22 16:52:13 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.LoanControllerTest - Starting LoanControllerTest using Java 17.0.10 with PID 19700 (started by aniket.dhakate in C:\NihilentBankTestCases\BankingApplication)
+2025-12-22 16:52:13 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.LoanControllerTest - The following 1 profile is active: "dev"
+2025-12-22 16:52:13 WARN  org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 1abf4dbd-e338-4b6e-a096-5844112337f1
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-12-22 16:52:13 INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-12-22 16:52:13 INFO  org.springframework.boot.test.mock.web.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-22 16:52:13 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2025-12-22 16:52:13 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 1 ms
+2025-12-22 16:52:13 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.LoanControllerTest - Started LoanControllerTest in 0.885 seconds (process running for 37.92)
+2025-12-22 16:52:14 WARN  com.nihilent.bank.serviceimpl.BeneficiaryAccountServiceImpl - Beneficiary Already Exists
+2025-12-22 16:52:14 WARN  com.nihilent.bank.serviceimpl.BeneficiaryAccountServiceImpl - Beneficiary Not Found
+2025-12-22 16:52:14 WARN  com.nihilent.bank.serviceimpl.BeneficiaryAccountServiceImpl - Beneficiary Not Found
+2025-12-22 16:52:14 INFO  com.nihilent.bank.serviceimpl.BeneficiaryAccountServiceImpl - Beneficiary Deleted
+2025-12-22 16:52:14 INFO  com.nihilent.bank.serviceimpl.BeneficiaryAccountServiceImpl - Beneficiary Added Successfully
+2025-12-22 16:52:14 INFO  com.nihilent.bank.serviceimpl.CreditCardServiceImpl - Request Sent
+2025-12-22 16:52:14 INFO  org.springframework.boot.devtools.restart.RestartApplicationListener - Restart disabled due to context in which it is running
+2025-12-22 16:52:14 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.CustomerControllerTest - Starting CustomerControllerTest using Java 17.0.10 with PID 19700 (started by aniket.dhakate in C:\NihilentBankTestCases\BankingApplication)
+2025-12-22 16:52:14 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.CustomerControllerTest - The following 1 profile is active: "dev"
+2025-12-22 16:52:15 WARN  org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 3a6b022f-3fa3-4888-a643-887346bfdf17
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-12-22 16:52:15 INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-12-22 16:52:15 INFO  org.springframework.boot.test.mock.web.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-22 16:52:15 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2025-12-22 16:52:15 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 2 ms
+2025-12-22 16:52:15 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.CustomerControllerTest - Started CustomerControllerTest in 0.775 seconds (process running for 39.354)
+2025-12-22 16:52:15 INFO  com.nihilent.bank.serviceimpl.CustomerServiceImpl - Customer Registered Successfully
+2025-12-22 16:52:15 ERROR com.nihilent.bank.serviceimpl.CustomerServiceImpl - null
+2025-12-22 16:52:15 INFO  org.springframework.boot.devtools.restart.RestartApplicationListener - Restart disabled due to context in which it is running
+2025-12-22 16:52:15 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.TransactionControllerTest - Starting TransactionControllerTest using Java 17.0.10 with PID 19700 (started by aniket.dhakate in C:\NihilentBankTestCases\BankingApplication)
+2025-12-22 16:52:15 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.TransactionControllerTest - The following 1 profile is active: "dev"
+2025-12-22 16:52:16 WARN  org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 55997340-3b58-49be-8e53-0f9a6dc0b4fe
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-12-22 16:52:16 INFO  org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-12-22 16:52:16 INFO  org.springframework.boot.test.mock.web.SpringBootMockServletContext - Initializing Spring TestDispatcherServlet ''
+2025-12-22 16:52:16 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Initializing Servlet ''
+2025-12-22 16:52:16 INFO  org.springframework.test.web.servlet.TestDispatcherServlet - Completed initialization in 1 ms
+2025-12-22 16:52:16 INFO  com.nihilent.BankingApplication.NihilentBank.controlllerTest.TransactionControllerTest - Started TransactionControllerTest in 0.749 seconds (process running for 40.631)
