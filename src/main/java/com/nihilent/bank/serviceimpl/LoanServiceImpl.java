@@ -41,16 +41,16 @@ public class LoanServiceImpl implements LoanService {
 	}
 
 	@Value("${LoanService.Loan_Type}")
-	private String loanTypeInvalid;
+	public String loanTypeInvalid;
 
 	@Value("${LoanService.Loan_Success}")
-	private String loanSuccess;
+	public String loanSuccess;
 
 	@Value("${LoanService.Loan_NotFound}")
-	private String loanNotFound;
+	public String loanNotFound;
 
 	@Value("${LoanService.Loan_Processed}")
-	private String loanProcessed;
+	public String loanProcessed;
 
 	@Override
 	@Transactional(rollbackFor = NihilentBankException.class)

@@ -74,34 +74,34 @@ public class TransactionServiceImpl implements TransactionService {
 	}
 
 	@Value("${TransactionService.Invalid_SenderAccountNumber}")
-	private String invalidSenderAccountNumber;
+	public  String invalidSenderAccountNumber;
 
 	@Value("${TransactionService.Invalid_ReceiverAccountNumber}")
-	private String invalidReceiverAccountNumber;
+	public String invalidReceiverAccountNumber;
 
 	@Value("${TransactionService.InsufficientBalance}")
-	private String insufficientBalance;
+	public String insufficientBalance;
 
 	@Value("${TransactionService.Transaction_Credit}")
-	private String transactionCredit;
+	public String transactionCredit;
 
 	@Value("${TransactionService.Transaction_Debit}")
-	private String transactionDebit;
+	public String transactionDebit;
 
 	@Value("${TransactionService.Transaction_Success}")
-	private String transactionSuccess;
+	public String transactionSuccess;
 
 	@Value("${TransactionService.Transaction_Limit}")
-	private String transactionLimit;
+	public String transactionLimit;
 
 	@Value("${TransactionService.Invalid_SenderUpiId}")
-	private String invalidSenderUpiId;
+	public String invalidSenderUpiId;
 
 	@Value("${TransactionService.Invalid_ReceiverUpiId}")
-	private String invalidReceiverUpiId;
+	public String invalidReceiverUpiId;
 
 	@Value("${KAFKA_TOPIC}")
-	private String kafkaTopic;
+	public String kafkaTopic;
 
 	@Override
 	@Transactional(rollbackFor = NihilentBankException.class)
