@@ -30,6 +30,7 @@ import jakarta.validation.constraints.Min;
 @Validated
 public class BeneficiaryAccountController {
 
+
 	// Service dependency to handle beneficiary account operations
 	private final BeneficiaryAccountService accountService;
 

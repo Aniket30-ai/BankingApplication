@@ -1,5 +1,7 @@
 package com.nihilent.bank.controller;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -28,8 +30,8 @@ public class BillPaymentsController {
 	}
 
 	@PostMapping("/bill/mobileRecharge")
-	public ResponseEntity<String> mobileRecharge(@RequestParam Long mobileNumber, @RequestParam Long accountNumber,
-			@RequestParam(name = "operator") String remark, @RequestParam Double amount) throws NihilentBankException {
+	public ResponseEntity<String> mobileRecharge(@RequestParam @Min(value = 1000000000L, message = "{customer.mobileNumber.invalid}") @Max(value = 9999999999L, message = "{customer.mobileNumber.invalid}")  Long mobileNumber, @RequestParam Long accountNumber,
+												 @RequestParam(name = "operator") String remark, @RequestParam Double amount) throws NihilentBankException {
 
 		// Call service method to process mobile recharge
 		String mobileRecharge = billPayments.mobileRecharge(mobileNumber, amount, remark, accountNumber);
@@ -38,8 +40,8 @@ public class BillPaymentsController {
 	}
 
 	@PostMapping("/bill/dthRecharge")
-	public ResponseEntity<String> dthRecharge(@RequestParam Long subscriberId, @RequestParam Long accountNumber,
-			@RequestParam(name = "provider") String remark, @RequestParam Double amount) throws NihilentBankException {
+	public ResponseEntity<String> dthRecharge(  @RequestParam @Min(value = 1000000000L, message = "{customer.subscriberId.invalid}") @Max(value = 9999999999L, message = "{customer.subscriberId.invalid}") Long subscriberId, @RequestParam Long accountNumber,
+												@RequestParam(name = "provider") String remark, @RequestParam Double amount) throws NihilentBankException {
 
 		// Call service method to process DTH recharge
 		String dthRecharge = billPayments.dthRecharge(subscriberId, amount, remark, accountNumber);
@@ -48,13 +50,12 @@ public class BillPaymentsController {
 	}
 
 	@PostMapping("/bill/electricityBill")
-	public ResponseEntity<String> electricityBill(@RequestParam Long consumerNumber, @RequestParam Long accountNumber,
-			@RequestParam(name = "provider") String remark, @RequestParam Double amount) throws NihilentBankException {
+	public ResponseEntity<String> electricityBill(@RequestParam @Min(value = 1000000000L, message = "{customer.consumerNumber.invalid}") @Max(value = 9999999999L, message = "{customer.consumerNumber.invalid}") Long consumerNumber, @RequestParam Long accountNumber,
+												  @RequestParam(name = "provider") String remark, @RequestParam Double amount) throws NihilentBankException {
 
 		// Call service method to process Electricity Bill
 		String electricityBill = billPayments.electricityBill(consumerNumber, amount, remark, accountNumber);
 
 		return new ResponseEntity<>(electricityBill, HttpStatus.OK);
 	}
-
 }
