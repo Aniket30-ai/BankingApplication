@@ -73,7 +73,6 @@ class AuditLogServiceTest {
         assertEquals("SUCCESS", log.getStatus());
         assertNull(log.getErrorMesssage());
 
-        // transactionTime is dynamic → just check it's not null
         assertNotNull(log.getTransactionTime());
     }
 }
