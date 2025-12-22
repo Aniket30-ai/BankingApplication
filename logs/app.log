@@ -1842,3 +1842,13 @@ org.apache.kafka.common.errors.TimeoutException: Topic transaction not present i
 2025-11-28 11:45:49 INFO  org.springframework.kafka.listener.KafkaMessageListenerContainer - groupID: partitions assigned: [kafkaTopic-0]
 2025-11-28 11:45:49 INFO  com.nihilent.bank.NihilentBankApplication - Started NihilentBankApplication in 5.051 seconds (process running for 1934.96)
 2025-11-28 11:45:49 INFO  org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-12-22 15:27:51 WARN  com.nihilent.bank.serviceimpl.BeneficiaryAccountServiceImpl - Beneficiary Already Exists
+2025-12-22 15:27:51 WARN  com.nihilent.bank.serviceimpl.BeneficiaryAccountServiceImpl - Beneficiary Not Found
+2025-12-22 15:27:51 WARN  com.nihilent.bank.serviceimpl.BeneficiaryAccountServiceImpl - Beneficiary Not Found
+2025-12-22 15:27:51 INFO  com.nihilent.bank.serviceimpl.BeneficiaryAccountServiceImpl - Beneficiary Deleted
+2025-12-22 15:27:51 INFO  com.nihilent.bank.serviceimpl.BeneficiaryAccountServiceImpl - Beneficiary Added Successfully
+2025-12-22 15:28:05 WARN  com.nihilent.bank.serviceimpl.BeneficiaryAccountServiceImpl - Beneficiary Already Exists
+2025-12-22 15:28:05 WARN  com.nihilent.bank.serviceimpl.BeneficiaryAccountServiceImpl - Beneficiary Not Found
+2025-12-22 15:28:05 WARN  com.nihilent.bank.serviceimpl.BeneficiaryAccountServiceImpl - Beneficiary Not Found
+2025-12-22 15:28:05 INFO  com.nihilent.bank.serviceimpl.BeneficiaryAccountServiceImpl - Beneficiary Deleted
+2025-12-22 15:28:05 INFO  com.nihilent.bank.serviceimpl.BeneficiaryAccountServiceImpl - Beneficiary Added Successfully
