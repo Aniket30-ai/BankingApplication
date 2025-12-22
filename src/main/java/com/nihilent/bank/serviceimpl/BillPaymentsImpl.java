@@ -32,13 +32,13 @@ public class BillPaymentsImpl implements BillPayments {
 	}
 
 	@Value("${BillPaymentService.Insufficient_Balance}")
-	private String insufficientBalance;
+	public String insufficientBalance;
 
 	@Value("${BillPaymentService.Success}")
-	private String success;
+	public String success;
 	
 	@Value("${BankAccountService.Account_Empty}")
-	private String accountNotFound;
+	public String accountNotFound;
 
 	@Override
 	@Transactional(rollbackFor = NihilentBankException.class)
