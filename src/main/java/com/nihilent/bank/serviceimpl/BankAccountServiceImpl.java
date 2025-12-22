@@ -48,19 +48,19 @@ public class BankAccountServiceImpl implements BankAccountService {
 	}
 
 	@Value("${CustomerService.Invalid_MobileNumber}")
-	private String invalidMobileNumber;
+	public  String invalidMobileNumber;
 
 	@Value("${BankAccountService.Invalid_AccountNumber}")
-	private String invalidAccountNumber;
+	public  String invalidAccountNumber;
 
 	@Value("${BankAccountService.Not_Found}")
-	private String accountProcessed;
+	public  String accountProcessed;
 
 	@Value("${BankAccountService.Account_Delete}")
-	private String accountDeleted;
+	public String accountDeleted;
 
 	@Value("${BankAccountService.Account_Empty}")
-	private String accountNotFound;
+	public String accountNotFound;
 
 	@Override
 	@Transactional(rollbackFor = NihilentBankException.class)
