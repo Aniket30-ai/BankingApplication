@@ -13,11 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.test.util.ReflectionTestUtils;
 
 import com.nihilent.bank.dto.CustomerDto;
@@ -35,6 +37,15 @@ class CustomerServiceTest {
 
     @InjectMocks
     private CustomerServiceImpl customerService;
+
+
+
+    @BeforeEach
+    void setUp() {
+
+
+        customerService.invalidCredentials="Failed, Wrong EmailId or Password.";
+    }
 
     @Test
     void testRegisterCustomer_Success() throws Exception {
@@ -100,6 +111,53 @@ class CustomerServiceTest {
             customerService.loadUserByUsername("notfound@gmail.com");
         });
     }
+
+
+
+    @Test
+    void loadUserByUsername_customerNotFound_throwsException() {
+        when(customerRepository.findByEmailId("missing@example.com")).thenReturn(Optional.empty());
+
+        RuntimeException exception = assertThrows(RuntimeException.class,
+                () -> customerService.loadUserByUsername("missing@example.com"));
+
+        assertEquals("Account not found", exception.getMessage());
+    }
+
+    // ================= Password Null =================
+    @Test
+    void loadUserByUsername_passwordNull_throwsUsernameNotFoundException() {
+
+        Customer customer= new Customer();
+
+        customer.setEmailId("test@gmail.com");
+        customer.setPassword(null);
+
+        when(customerRepository.findByEmailId("test@example.com")).thenReturn(Optional.of(customer));
+
+        UsernameNotFoundException exception = assertThrows(UsernameNotFoundException.class,
+                () -> customerService.loadUserByUsername("test@example.com"));
+
+        assertEquals("Failed, Wrong EmailId or Password.", exception.getMessage());
+    }
+
+    // ================= Email Null =================
+    @Test
+    void loadUserByUsername_emailNull_throwsUsernameNotFoundException() {
+
+
+        Customer customer = new Customer();
+        customer.setPassword("password123");
+
+        customer.setEmailId(null);
+        when(customerRepository.findByEmailId("test@example.com")).thenReturn(Optional.of(customer));
+
+        UsernameNotFoundException exception = assertThrows(UsernameNotFoundException.class,
+                () -> customerService.loadUserByUsername("test@example.com"));
+
+        assertEquals("Failed, Wrong EmailId or Password.", exception.getMessage());
+    }
+
 
 
     @Test
@@ -202,5 +260,54 @@ class CustomerServiceTest {
         });
     }
 
+
+
+
+
+
+
+    @Test
+    void generateCustomerId_firstCustomer()  {
+        when(customerRepository.findTopByOrderByIdDesc())
+                .thenReturn(Optional.empty());
+
+
+
+        String s = customerService.generateCustomerId();
+
+        assertEquals("CH001", s);
+    }
+
+    @Test
+    void generateCustomerId_nextCustomer() {
+        Customer lastCustomer = new Customer();
+        lastCustomer.setCustomerId("CH005");
+
+        when(customerRepository.findTopByOrderByIdDesc())
+                .thenReturn(Optional.of(lastCustomer));
+
+
+
+      String s=  customerService.generateCustomerId();
+
+        assertEquals("CH006", s);
+    }
+
+    @Test
+    void generateCustomerId_invalidFormat_fallbackToCH001()  {
+        Customer lastCustomer = new Customer();
+        lastCustomer.setCustomerId("INVALID");
+
+        when(customerRepository.findTopByOrderByIdDesc())
+                .thenReturn(Optional.of(lastCustomer));
+
+
+
+      String s=  customerService.generateCustomerId();
+
+        assertEquals("CH001", s);
+    }
 }
+
+
 

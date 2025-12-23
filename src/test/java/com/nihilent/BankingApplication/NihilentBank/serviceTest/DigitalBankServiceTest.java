@@ -1,9 +1,7 @@
 package com.nihilent.BankingApplication.NihilentBank.serviceTest;
 
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -13,8 +11,11 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Optional;
 
+import com.google.zxing.WriterException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -170,6 +171,31 @@ class DigitalBankServiceTest {
 
         assertArrayEquals("qr".getBytes(), result);
     }
+
+
+
+    @Test
+    void generateQRCodeImage_validInput_success() throws WriterException, IOException {
+        String text = "https://example.com";
+        int width = 300;
+        int height = 300;
+        String filePath = "qrcodes/test_qr.png";
+
+        byte[] qrBytes = digitalBankService.generateQRCodeImage(text, width, height, filePath);
+
+        // Check that the byte array is not empty
+        assertNotNull(qrBytes);
+        assertTrue(qrBytes.length > 0);
+
+        // Check that the file is created
+        File file = new File(filePath);
+        assertTrue(file.exists());
+
+        // Clean up test file
+        file.delete();
+    }
+
+
 
     // ----------------------------------------------------------
     // 🔹 TEST getQRCode() — INVALID UPI

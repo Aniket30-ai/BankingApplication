@@ -82,34 +82,7 @@ class TransactionControllerTest {
                 .thenReturn("Fund Transfer Successful");
 
     }
-//
-//    @Test
-//     void testFundTransfer_InsufficientBalance() throws Exception {
-//
-//        transactionDto.setSenderAccountNumber(1L);
-//        transactionDto.setReceivingAccountNumber(2L);
-//        transactionDto.setAmount(5000d);
-//
-//        BankAccount sender = new BankAccount();
-//        sender.setAccountNumber(1L);
-//        sender.setBalance(10000d); // Insufficient balance
-//
-//        BankAccount receiver = new BankAccount();
-//        receiver.setAccountNumber(2L);
-//        receiver.setBalance(2000d);
-//
-//        when(accountRepository.findByAccountNumber(1L)).thenReturn(Optional.of(sender));
-//        when(accountRepository.findByAccountNumber(2L)).thenReturn(Optional.of(receiver));
-//
-//        mockMvc.perform(post("/NihilentBank/user/fundTransfer")
-//                        .contentType(MediaType.APPLICATION_JSON)
-//                        .content(objectMapper.writeValueAsString(transactionDto)))
-//                .andExpect(status().isInternalServerError())
-//                .andExpect(content().string("Insufficient balance in sender's account"));
-//    }
-//
-//
-//
+
 
 
 

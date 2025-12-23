@@ -40,7 +40,7 @@ public class CustomerServiceImpl implements CustomerService, UserDetailsService 
 	private String customerRegister;
 
 	@Value("${CustomerService.INVALID_CREDENTIALS}")
-	private String invalidCredentials;
+	public String invalidCredentials;
 
 	@Value("${CustomerService.Not_Found}")
 	private String customerNotFound;
@@ -169,7 +169,7 @@ public class CustomerServiceImpl implements CustomerService, UserDetailsService 
 		return customerUpdate;
 	}
 
-	private String generateCustomerId() {
+	public String generateCustomerId() {
 		Optional<Customer> lastCustomer = customerRepository.findTopByOrderByIdDesc();
 
 		int nextId = 1;

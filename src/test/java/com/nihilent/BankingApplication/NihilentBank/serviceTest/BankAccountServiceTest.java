@@ -151,6 +151,22 @@ class BankAccountServiceTest {
         verify(accountRepository, times(1)).deleteByAccountNumber(2222L);
     }
 
+
+
+    @Test
+    void testDeleteAccount_InvalidAccountNumber() {
+
+
+        Long accountNumber=null;
+
+        when(accountRepository.findByAccountNumber(null)).thenReturn(Optional.empty());
+
+        NihilentBankException exception = assertThrows(NihilentBankException.class,
+                () -> bankAccountService.accountDelete(accountNumber));
+
+        assertEquals("Invalid Account Number", exception.getMessage());
+    }
+
     @Test
     void testApplyBankAccount_Success() throws NihilentBankException {
         BankAccountRequest request = new BankAccountRequest();
