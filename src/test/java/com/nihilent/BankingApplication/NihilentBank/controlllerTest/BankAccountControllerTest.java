@@ -62,12 +62,6 @@ class BankAccountControllerTest {
 
 
 
-
-
-
-
-
-
     @Test
     void testCreateAccount_success() throws Exception {
 
@@ -193,8 +187,6 @@ class BankAccountControllerTest {
 
 
 
-
-
     @Test
     void testGetAccountDetails_success() throws Exception {
 
@@ -267,8 +259,6 @@ class BankAccountControllerTest {
     }
 
 
-
-
     @Test
     void testGetBalance_success() throws Exception {
 
@@ -307,7 +297,6 @@ class BankAccountControllerTest {
                 .andExpect(jsonPath("$.timeStamp").exists());
 
     }
-
 
 
 
@@ -373,8 +362,6 @@ class BankAccountControllerTest {
 
 
 
-
-
     @Test
     void testShowAllAccounts_invalidMobileNumber() throws Exception {
 
@@ -382,8 +369,6 @@ class BankAccountControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest());
     }
-
-
 
     @Test
     void testShowAllAccounts_noAccountsFound() throws Exception {
@@ -427,8 +412,6 @@ class BankAccountControllerTest {
     }
 
 
-
-
     @Test
     void testAccountDelete_accountNotFound() throws Exception {
 
@@ -447,11 +430,6 @@ class BankAccountControllerTest {
     }
 
 
-
-
-
-
-
     @Test
     void testRequestBankAccount_success() throws Exception {
 
@@ -464,13 +442,6 @@ class BankAccountControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string("Bank account request submitted successfully"));
     }
-
-
-
-
-
-
-
 
 
     @Test
@@ -487,8 +458,6 @@ class BankAccountControllerTest {
                 .andExpect(jsonPath("$.code").value(401))
                 .andExpect(jsonPath("$.timeStamp").exists());
     }
-
-
 
 
     @Test
@@ -533,11 +502,6 @@ class BankAccountControllerTest {
 
     }
 
-
-
-
-
-
     @Test
     void testUpdateLoanStatus_success() throws Exception {
 
@@ -559,18 +523,6 @@ class BankAccountControllerTest {
     }
 
 
-
-
-//    @Test
-//    void testUpdateLoanStatus_invalidStatus() throws Exception {
-//
-//        mockMvc.perform(put("/NihilentBank/updateAccount/{loanId}/{status}", 1L, LoanStatus.PENDING)
-//                        .contentType(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isBadRequest());
-//    }
-
-
-
     @Test
     void testUpdateLoanStatus_accountNotFound() throws Exception {
 
@@ -585,11 +537,6 @@ class BankAccountControllerTest {
                 .andExpect(jsonPath("$.timeStamp").exists());
 
     }
-
-
-
-
-
 
     @Test
     void testGetAccountStatus_success() throws Exception {
@@ -610,8 +557,6 @@ class BankAccountControllerTest {
                 .andExpect(jsonPath("$.accountType").value("SAVINGS"));
     }
 
-
-
     @Test
     void testGetAccountStatus_invalidMobileNumber() throws Exception {
 
@@ -619,9 +564,6 @@ class BankAccountControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest());
     }
-
-
-
 
     @Test
     void testGetAccountStatus_accountNotFound() throws Exception {

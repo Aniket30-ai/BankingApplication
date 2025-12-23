@@ -109,6 +109,20 @@ class BillPaymentServiceTest {
         verify(transactionRepository, times(1)).save(any(Transaction.class));
     }
 
+
+    @Test
+    void testDthRecharge_InsufficientBalance() {
+        account.setBalance(100.0);
+        when(accountRepository.findByAccountNumber(123L)).thenReturn(Optional.of(account));
+
+        NihilentBankException exception = assertThrows(NihilentBankException.class, () -> {
+            billPayments.dthRecharge(9999999999L, 500.0, "Recharge-", 123L);
+        });
+
+        assertEquals(insufficientBalance, exception.getMessage());
+        verify(transactionRepository, never()).save(any(Transaction.class));
+    }
+
     // And for electricityBill
     @Test
     void testElectricityBill_Success() throws Exception {
@@ -123,4 +137,19 @@ class BillPaymentServiceTest {
         verify(transactionRepository, times(1)).save(any(Transaction.class));
     }
 
+
+
+
+    @Test
+    void testElectricityRecharge_InsufficientBalance() {
+        account.setBalance(100.0);
+        when(accountRepository.findByAccountNumber(123L)).thenReturn(Optional.of(account));
+
+        NihilentBankException exception = assertThrows(NihilentBankException.class, () -> {
+            billPayments.electricityBill(9999999999L, 500.0, "Recharge-", 123L);
+        });
+
+        assertEquals(insufficientBalance, exception.getMessage());
+        verify(transactionRepository, never()).save(any(Transaction.class));
+    }
 }
