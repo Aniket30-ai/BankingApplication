@@ -50,7 +50,6 @@ class LoanServiceTest {
     private LoanServiceImpl loanService;
 
 
-
     private final String invalidLoan = "Invalid Loan Type";
     private final String loanSucess = "Loan Applied Successfully";
     private final String loanNotFound = "Loan Not Found";
@@ -84,19 +83,6 @@ class LoanServiceTest {
 
         verify(loanRepository, times(1)).save(any(Loan.class));
     }
-
-//    @Test
-//    public void testApplyLoan_InvalidType() {
-//        Loan loan = new Loan();
-//        loan.setLoanType(null); // invalid
-//
-//        NihilentBankException exception = assertThrows(NihilentBankException.class, () -> {
-//            loanService.applyLoan(loan);
-//        });
-//
-//        assertEquals(LOAN_TYPE_INVALID, exception.getMessage());
-//        verify(loanRepository, never()).save(any());
-//    }
 
     @Test
     void testUpdateLoanStatus_Success() throws Exception {

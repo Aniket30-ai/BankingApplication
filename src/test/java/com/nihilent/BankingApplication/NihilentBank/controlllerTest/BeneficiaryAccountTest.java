@@ -1,6 +1,5 @@
 package com.nihilent.BankingApplication.NihilentBank.controlllerTest;
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nihilent.bank.NihilentBankApplication;
 import com.nihilent.bank.controller.BeneficiaryAccountController;
@@ -65,10 +64,6 @@ class BeneficiaryAccountTest {
 
         BeneficiaryAccount beneficiaryAccount = new BeneficiaryAccount();
 
-
-
-
-
         BankAccount accountDto = new BankAccount();
         accountDto.setBankName("ICICI Bank");
         accountDto.setAccountType(AccountType.SAVING);
@@ -84,19 +79,7 @@ class BeneficiaryAccountTest {
         accountDto.setCustomer(customer);
 
         beneficiaryAccount.setBankAccount(accountDto);
-
-
-
         beneficiaryAccount.setId(1L);
-
-
-//        BeneficiaryAccount response = new BeneficiaryAccount();
-//        response.setId(1L);
-//        response.setBankAccount();
-//        response.setBeneficiaryName("John Doe");
-//        response.setAccountNumber(12345678L);
-//        response.setIfscCode("HDFC0001234");
-//        response.setBankName("HDFC Bank");
 
         when(beneficiaryAccountService.addBeneficiary(any(BeneficiaryAccount.class)))
                 .thenReturn(beneficiaryAccount);
@@ -111,21 +94,11 @@ class BeneficiaryAccountTest {
                 .andExpect(jsonPath("$.bankAccount.accountNumber").value(12345678L));
     }
 
-
-
-
-
-
-
-
     @Test
     void testAddBeneficiary_businessException() throws Exception {
-//
+
         BeneficiaryAccount request = new BeneficiaryAccount();
-//        request.setBeneficiaryName("John Doe");
-//        request.setAccountNumber(12345678L);
-//        request.setIfscCode("HDFC0001234");
-//        request.setBankName("HDFC Bank");
+
 
         when(beneficiaryAccountService.addBeneficiary(any(BeneficiaryAccount.class)))
                 .thenThrow(new NihilentBankException("Beneficiary already exists"));
@@ -139,9 +112,6 @@ class BeneficiaryAccountTest {
                 .andExpect(jsonPath("$.timeStamp").exists());
 
     }
-
-
-
 
     @Test
     void listBeneficaryAccount_success() throws Exception {
@@ -162,26 +132,17 @@ class BeneficiaryAccountTest {
         bankAccount.setCustomer(customer);
         b1.setBankAccount(bankAccount);
 
-
-
         BeneficiaryAccount b2 = new BeneficiaryAccount();
-
-
         b2.setId(2L);
-
         BankAccount bankAccount2 = new BankAccount();
 
         bankAccount.setAccountNumber(1234567891L);
 
         Customer customer2 = new Customer();
 
-
         customer2.setName("Alice");
         bankAccount.setCustomer(customer2);
         b1.setBankAccount(bankAccount2);
-
-
-//        BeneficiaryAccount b2 = new BeneficiaryAccount(2L, "Alice", "9876543210");
 
         List<BeneficiaryAccount> beneficiaryList = Arrays.asList(b1, b2);
 
@@ -237,7 +198,6 @@ class BeneficiaryAccountTest {
     }
 
 
-
     @Test
     void deleteAccount_notFound() throws Exception {
 
@@ -248,9 +208,6 @@ class BeneficiaryAccountTest {
 
         mockMvc.perform(MockMvcRequestBuilders
                         .delete("/NihilentBank/beneficiary/delete/{id}", beneficiaryId))
-//                .andExpect(status().isInternalServerError());
-
-
                        .andExpect(status().isUnauthorized())  // 401 code in your handler
                 .andExpect(jsonPath("$.message").value("Beneficiary not found"))
                 .andExpect(jsonPath("$.code").value(401))
