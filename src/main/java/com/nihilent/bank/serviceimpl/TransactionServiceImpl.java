@@ -185,22 +185,22 @@ public class TransactionServiceImpl implements TransactionService {
 		}
 		logger.info(this.transactionDebit);
 
-		Transaction LocalTransactionCredit = new Transaction();
+		Transaction transactioncredit = new Transaction();
 
-		LocalTransactionCredit.setTransactionId(transactionId2);
+		transactioncredit.setTransactionId(transactionId2);
 
-		LocalTransactionCredit.setModeOfTransaction(transactionDto.getModeOfTransaction());
+		transactioncredit.setModeOfTransaction(transactionDto.getModeOfTransaction());
 
-		LocalTransactionCredit.setAmount(transactionDto.getAmount());
-		LocalTransactionCredit.setReceivingAccountNumber(transactionDto.getReceivingAccountNumber());
+		transactioncredit.setAmount(transactionDto.getAmount());
+		transactioncredit.setReceivingAccountNumber(transactionDto.getReceivingAccountNumber());
 
-		LocalTransactionCredit.setRemark(transactionDto.getRemark());
-		LocalTransactionCredit.setSenderAccountNumber(transactionDto.getSenderAccountNumber());
+		transactioncredit.setRemark(transactionDto.getRemark());
+		transactioncredit.setSenderAccountNumber(transactionDto.getSenderAccountNumber());
 
-		LocalTransactionCredit.setTransactionType(CREDIT);
-		LocalTransactionCredit.setCredit(transactionDto.getAmount());
-		LocalTransactionCredit.setClosingBalance(bankAccount.getBalance());
-		transactionRepository.save(LocalTransactionCredit);
+		transactioncredit.setTransactionType(CREDIT);
+		transactioncredit.setCredit(transactionDto.getAmount());
+		transactioncredit.setClosingBalance(bankAccount.getBalance());
+		transactionRepository.save(transactioncredit);
 		logger.info(this.transactionCredit);
 		return transactionId3;
 	}

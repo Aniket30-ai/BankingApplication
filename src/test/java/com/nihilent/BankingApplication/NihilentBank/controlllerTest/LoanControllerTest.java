@@ -1,8 +1,6 @@
 package com.nihilent.BankingApplication.NihilentBank.controlllerTest;
 
 
-
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nihilent.bank.NihilentBankApplication;
 import com.nihilent.bank.controller.LoanController;
@@ -15,7 +13,6 @@ import com.nihilent.bank.repository.LoanRepository;
 import com.nihilent.bank.service.LoanService;
 import com.nihilent.bank.utility.JwtUtil;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -29,11 +26,8 @@ import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 @WebMvcTest(LoanController.class)
 @ContextConfiguration(classes = NihilentBankApplication.class)
 @AutoConfigureMockMvc(addFilters = false)
