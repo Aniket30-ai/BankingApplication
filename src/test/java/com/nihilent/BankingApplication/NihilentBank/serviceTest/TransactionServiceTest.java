@@ -15,7 +15,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.kafka.core.KafkaTemplate;
 
@@ -49,13 +48,11 @@ class TransactionServiceTest {
     private TransactionServiceImpl transactionServiceImpl;
 
 
-    private TransactionServiceImpl spyTransactionService;
+
 
     @BeforeEach
     void setup() {
-        // Set @Value fields manually
 
-        spyTransactionService = Mockito.spy(transactionServiceImpl);
         transactionServiceImpl.invalidSenderAccountNumber = "Invalid Sender Account Number";
         transactionServiceImpl.invalidReceiverAccountNumber = "Invalid Receiver Account Number";
         transactionServiceImpl.insufficientBalance = "Insufficient Balance";

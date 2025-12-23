@@ -1,13 +1,10 @@
 package com.nihilent.BankingApplication.NihilentBank.controlllerTest;
 
 
-
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nihilent.bank.NihilentBankApplication;
 import com.nihilent.bank.controller.TransactionController;
 import com.nihilent.bank.dto.TransactionDto;
-import com.nihilent.bank.entity.BankAccount;
 import com.nihilent.bank.exception.NihilentBankException;
 import com.nihilent.bank.filter.JwtFilter;
 import com.nihilent.bank.repository.BankAccountRepository;
@@ -26,7 +23,6 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;

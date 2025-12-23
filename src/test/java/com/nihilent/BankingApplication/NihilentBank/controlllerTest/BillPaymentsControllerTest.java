@@ -2,6 +2,7 @@ package com.nihilent.BankingApplication.NihilentBank.controlllerTest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nihilent.bank.NihilentBankApplication;
+import com.nihilent.bank.controller.BillPaymentsController;
 import com.nihilent.bank.exception.NihilentBankException;
 import com.nihilent.bank.filter.JwtFilter;
 import com.nihilent.bank.service.BillPayments;
@@ -10,22 +11,15 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-
-import com.nihilent.bank.controller.BillPaymentsController;
 import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
 
-
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @WebMvcTest(BillPaymentsController.class)
 @ContextConfiguration(classes = NihilentBankApplication.class)

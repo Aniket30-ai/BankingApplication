@@ -1,11 +1,9 @@
 package com.nihilent.BankingApplication.NihilentBank.controlllerTest;
 
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nihilent.bank.NihilentBankApplication;
 import com.nihilent.bank.controller.BeneficiaryAccountController;
-import com.nihilent.bank.dto.BankAccountDto;
 import com.nihilent.bank.entity.*;
 import com.nihilent.bank.exception.NihilentBankException;
 import com.nihilent.bank.filter.JwtFilter;
@@ -13,7 +11,7 @@ import com.nihilent.bank.repository.BankAccountRepository;
 import com.nihilent.bank.service.BeneficiaryAccountService;
 import com.nihilent.bank.utility.JwtUtil;
 import org.junit.jupiter.api.Test;
-
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -22,15 +20,15 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
-
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -140,6 +138,123 @@ class BeneficiaryAccountTest {
                 .andExpect(jsonPath("$.code").value(401))
                 .andExpect(jsonPath("$.timeStamp").exists());
 
+    }
+
+
+
+
+    @Test
+    void listBeneficaryAccount_success() throws Exception {
+
+        BeneficiaryAccount b1 = new BeneficiaryAccount();
+
+
+        b1.setId(1L);
+
+        BankAccount bankAccount = new BankAccount();
+
+        bankAccount.setAccountNumber(1234567890L);
+
+        Customer customer = new Customer();
+
+
+        customer.setName("John");
+        bankAccount.setCustomer(customer);
+        b1.setBankAccount(bankAccount);
+
+
+
+        BeneficiaryAccount b2 = new BeneficiaryAccount();
+
+
+        b2.setId(2L);
+
+        BankAccount bankAccount2 = new BankAccount();
+
+        bankAccount.setAccountNumber(1234567891L);
+
+        Customer customer2 = new Customer();
+
+
+        customer2.setName("Alice");
+        bankAccount.setCustomer(customer2);
+        b1.setBankAccount(bankAccount2);
+
+
+//        BeneficiaryAccount b2 = new BeneficiaryAccount(2L, "Alice", "9876543210");
+
+        List<BeneficiaryAccount> beneficiaryList = Arrays.asList(b1, b2);
+
+        Mockito.when(beneficiaryAccountService.getAllBeneficiaries())
+                .thenReturn(beneficiaryList);
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/NihilentBank/beneficiary/list"))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$.size()").value(2))
+                .andExpect(jsonPath("$[0].id").value(1L))
+                .andExpect(jsonPath("$[1].id").value(2L));
+    }
+
+
+
+    @Test
+    void listBeneficaryAccount_emptyList() throws Exception {
+
+        Mockito.when(beneficiaryAccountService.getAllBeneficiaries())
+                .thenReturn(Collections.emptyList());
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/NihilentBank/beneficiary/list"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.length()").value(0));
+    }
+
+
+
+    @Test
+    void deleteAccount_success() throws Exception {
+
+        Long beneficiaryId = 1L;
+
+        Mockito.when(beneficiaryAccountService.deleteBeneficiayAccount(beneficiaryId))
+                .thenReturn("Beneficiary deleted successfully");
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .delete("/NihilentBank/beneficiary/delete/{id}", beneficiaryId))
+                .andExpect(status().isOk())
+                .andExpect(content().string("Beneficiary deleted successfully"));
+    }
+
+
+    @Test
+    void deleteAccount_invalidId() throws Exception {
+
+        Long invalidId = 0L;
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .delete("/NihilentBank/beneficiary/delete/{id}", invalidId))
+                .andExpect(status().isBadRequest());
+    }
+
+
+
+    @Test
+    void deleteAccount_notFound() throws Exception {
+
+        Long beneficiaryId = 10L;
+
+        Mockito.when(beneficiaryAccountService.deleteBeneficiayAccount(beneficiaryId))
+                .thenThrow(new NihilentBankException("Beneficiary not found"));
+
+        mockMvc.perform(MockMvcRequestBuilders
+                        .delete("/NihilentBank/beneficiary/delete/{id}", beneficiaryId))
+//                .andExpect(status().isInternalServerError());
+
+
+                       .andExpect(status().isUnauthorized())  // 401 code in your handler
+                .andExpect(jsonPath("$.message").value("Beneficiary not found"))
+                .andExpect(jsonPath("$.code").value(401))
+                .andExpect(jsonPath("$.timeStamp").exists());
     }
 
 

@@ -1,7 +1,6 @@
 package com.nihilent.BankingApplication.NihilentBank.controlllerTest;
 
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nihilent.bank.NihilentBankApplication;
 import com.nihilent.bank.controller.BankAccountController;
@@ -14,7 +13,6 @@ import com.nihilent.bank.filter.JwtFilter;
 import com.nihilent.bank.repository.BankAccountRepository;
 import com.nihilent.bank.service.BankAccountService;
 import com.nihilent.bank.utility.JwtUtil;
-import org.hibernate.validator.constraints.Mod10Check;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -30,13 +28,8 @@ import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 
 @WebMvcTest(BankAccountController.class)
 @ContextConfiguration(classes = NihilentBankApplication.class)
@@ -164,6 +157,38 @@ class BankAccountControllerTest {
                 .andExpect(jsonPath("$.code").value(401))
                 .andExpect(jsonPath("$.timeStamp").exists());
 
+    }
+
+
+    @Test
+    void showAllAccountDetails_success() throws Exception {
+
+        when(accountService.showAllAcountsDetails())
+                .thenReturn(List.of(new BankAccountDto()));
+
+        mockMvc.perform(get("/NihilentBank/admin/allAccountDetails"))
+                .andExpect(status().isOk());
+    }
+
+
+    @Test
+    void getAccountDetail_success() throws Exception {
+
+        long mobileNumber = 9876543210L;
+
+        when(accountService.getAccountDetail(mobileNumber))
+                .thenReturn(new BankAccountDto());
+
+        mockMvc.perform(get("/NihilentBank/user/accountDetails/{mobileNumber}", mobileNumber))
+                .andExpect(status().isOk());
+    }
+
+
+    @Test
+    void getAccountDetail_invalidMobileNumber() throws Exception {
+
+        mockMvc.perform(get("/NihilentBank/user/accountDetails/{mobileNumber}", 123))
+                .andExpect(status().isBadRequest());
     }
 
 

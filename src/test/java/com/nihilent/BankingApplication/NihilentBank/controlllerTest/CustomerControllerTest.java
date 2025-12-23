@@ -99,7 +99,7 @@ class CustomerControllerTest {
     }
 
 
-//    @Test
+    @Test
     void testAuthenticate_success() throws Exception {
 // Sample AuthRequest
         AuthRequest authRequest = new AuthRequest();
